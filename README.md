@@ -16,12 +16,32 @@ leetcode-java/
 ├── .gitignore                    # 忽略 bin/ 等编译产物
 ├── .vscode/settings.json         # VS Code Java 工程配置
 ├── tools/
-│   └── add-problem.ps1           # 收录新题解的脚本
+│   ├── add-problem.ps1           # 收录新题解的脚本
+│   └── push.ps1                  # 带自动重试的 git push
 └── src/
     └── leetcode/
         └── array/
             └── P0001TwoSum.java
 ```
+
+## 推送（网络不稳时用这个）
+
+国内访问 `github.com` 的连接经常**间歇性失败**，`git push` 会直接报
+`Failed to connect to github.com port 443`，每次白等约 21 秒超时。用这个脚本代替：
+
+```powershell
+.\tools\push.ps1
+```
+
+它先做 3 秒超时的快速 TCP 探活，端口通了才真正推送，不通就等待重试，
+默认最多 40 次、间隔 15 秒。参数可按需调：
+
+```powershell
+.\tools\push.ps1 -MaxAttempts 60 -IntervalSeconds 20
+```
+
+> 实测记录：同一批提交，有时 1 次成功，有时要等到第 6 次。这是随机波动，
+> 重试就能解决；代码在本地提交后是安全的，不会丢。
 
 ## 题目索引
 
@@ -30,6 +50,7 @@ leetcode-java/
 | ---: | --- | :--: | --- | --- | --- |
 | 1 | Two Sum / 两数之和 | Easy | array | 暴力双重循环，O(n²) | [P0001TwoSum.java](src/leetcode/array/P0001TwoSum.java) |
 | 11 | Container With Most Water / 盛最多水的容器 | Medium | two-pointers | 左右双指针，每次移动较矮的一侧，面积 O(n) 求最大 | [P0011ContainerWithMostWater.java](src/leetcode/two-pointers/P0011ContainerWithMostWater.java) |
+| 15 | 3Sum / 三数之和 | Medium | two-pointers | 排序 + 双指针夹逼，三层去重 | [P0015ThreeSum.java](src/leetcode/two-pointers/P0015ThreeSum.java) |
 | 49 | Group Anagrams / 字母异位词分组 | Medium | hash | 排序后的字符串作哈希键，O(n·k log k) | [P0049GroupAnagrams.java](src/leetcode/hash/P0049GroupAnagrams.java) |
 | 128 | Longest Consecutive Sequence / 最长连续序列 | Medium | hash | HashSet O(n) 查找，只从序列起点(num-1 不存在)开始扩展 | [P0128LongestConsecutiveSequence.java](src/leetcode/hash/P0128LongestConsecutiveSequence.java) |
 | 283 | Move Zeroes / 移动零 | Easy | two-pointers | 快慢双指针，非零元素依次换到前面，零自动沉底 | [P0283MoveZeroes.java](src/leetcode/two-pointers/P0283MoveZeroes.java) |
