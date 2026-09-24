@@ -31,6 +31,7 @@ leetcode-java/
 | 1 | Two Sum / 两数之和 | Easy | array | 暴力双重循环，O(n²) | [P0001TwoSum.java](src/leetcode/array/P0001TwoSum.java) |
 | 49 | Group Anagrams / 字母异位词分组 | Medium | hash | 排序后的字符串作哈希键，O(n·k log k) | [P0049GroupAnagrams.java](src/leetcode/hash/P0049GroupAnagrams.java) |
 | 128 | Longest Consecutive Sequence / 最长连续序列 | Medium | hash | HashSet O(n) 查找，只从序列起点(num-1 不存在)开始扩展 | [P0128LongestConsecutiveSequence.java](src/leetcode/hash/P0128LongestConsecutiveSequence.java) |
+| 283 | Move Zeroes / 移动零 | Easy | two-pointers | 快慢双指针，非零元素依次换到前面，零自动沉底 | [P0283MoveZeroes.java](src/leetcode/two-pointers/P0283MoveZeroes.java) |
 <!-- INDEX:END -->
 
 ## 怎么加一道新题
