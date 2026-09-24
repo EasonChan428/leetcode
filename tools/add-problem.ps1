@@ -144,6 +144,44 @@ if (-not $renamed) {
     }
 }
 
+# ---------- 4.5 自动补 Java 导入 ----------
+# LeetCode 的编辑器自带 java.util 等导入，但复制出来的代码没有 import 语句，
+# 直接存成文件会因为「找不到符号」编译失败。这里按代码里出现的类型名补通配导入。
+# 如果代码里本来就有 import，就完全不动它。
+$addedImports = @()
+$hasImport = [regex]::IsMatch($code, '(?m)^\s*import\s+')
+
+if (-not $hasImport) {
+    $groups = [ordered]@{
+        'java.util.*'          = @(
+            'List', 'ArrayList', 'LinkedList', 'Map', 'HashMap', 'LinkedHashMap',
+            'Set', 'HashSet', 'LinkedHashSet', 'TreeMap', 'TreeSet', 'SortedMap', 'SortedSet',
+            'Queue', 'Deque', 'ArrayDeque', 'Stack', 'PriorityQueue', 'Vector',
+            'Arrays', 'Collections', 'Iterator', 'ListIterator', 'Comparator',
+            'Objects', 'Optional', 'StringJoiner', 'Random', 'BitSet'
+        )
+        'java.util.stream.*'   = @('Stream', 'IntStream', 'LongStream', 'DoubleStream', 'Collectors')
+        'java.util.function.*' = @(
+            'Function', 'BiFunction', 'Supplier', 'Consumer', 'Predicate',
+            'UnaryOperator', 'BinaryOperator', 'IntFunction', 'ToIntFunction', 'IntPredicate'
+        )
+    }
+
+    $prefix = ''
+    foreach ($ns in $groups.Keys) {
+        $hit = $false
+        foreach ($t in $groups[$ns]) {
+            if ([regex]::IsMatch($code, "\b$t\b")) { $hit = $true; break }
+        }
+        if ($hit) {
+            $prefix += "import $ns;`r`n"
+            $addedImports += $ns
+        }
+    }
+
+    if ($prefix) { $code = $prefix + "`r`n" + $code }
+}
+
 # ---------- 5. 写文件 ----------
 $destDir = Split-Path -Parent $destPath
 if (-not (Test-Path -LiteralPath $destDir)) {
@@ -206,6 +244,7 @@ Write-Host "  文件     : $relPath"
 Write-Host "  来源     : $origin"
 Write-Host "  改类名   : $(if ($renamed) { "是（Solution -> $className）" } else { '否' })"
 Write-Host "  去package: $(if ($strippedPackage) { '是' } else { '否' })"
+Write-Host "  补import : $(if ($addedImports.Count -gt 0) { '是（' + ($addedImports -join ', ') + '）' } else { '否' })"
 Write-Host "  索引     : $(if ($indexUpdated) { '已更新' } else { '未更新' })"
 
 if ($Commit) {
