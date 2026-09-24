@@ -29,6 +29,7 @@ leetcode-java/
 | 题号 | 题目 | 难度 | 主题 | 解法要点 | 文件 |
 | ---: | --- | :--: | --- | --- | --- |
 | 1 | Two Sum / 两数之和 | Easy | array | 暴力双重循环，O(n²) | [P0001TwoSum.java](src/leetcode/array/P0001TwoSum.java) |
+| 49 | Group Anagrams / 字母异位词分组 | Medium | hash | 排序后的字符串作哈希键，O(n·k log k) | [P0049GroupAnagrams.java](src/leetcode/hash/P0049GroupAnagrams.java) |
 <!-- INDEX:END -->
 
 ## 怎么加一道新题
@@ -48,8 +49,13 @@ leetcode-java/
 1. 生成唯一的类名（`P0002AddTwoNumbers`）并把代码里的 `class Solution` 替换掉；
 2. 把文件写到 `src/leetcode/<主题>/` 下；
 3. 删掉代码里多余的 `package` 声明；
-4. 在本文的索引表里插入一行（按题号排序）；
-5. 加了 `-Commit` 就顺手 `git add` + `git commit`。
+4. **自动补 import**：LeetCode 编辑器自带 `java.util` 等导入，复制出来的代码没有
+   `import` 语句，直接存盘会因「找不到符号」编译失败。脚本会扫描代码里用到的类型名
+   （`List` / `Map` / `HashMap` / `Arrays` / `Collectors` …），按需补上
+   `import java.util.*;`、`java.util.stream.*`、`java.util.function.*`。
+   如果代码里本来就有 `import`，则一个字都不动；
+5. 在本文的索引表里插入一行（按题号排序）；
+6. 加了 `-Commit` 就顺手 `git add` + `git commit`。
 
 参数说明：
 
