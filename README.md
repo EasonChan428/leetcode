@@ -55,6 +55,7 @@ leetcode-java/
 | 42 | Trapping Rain Water / 接雨水 | Hard | two-pointers | 双指针 + 左右最大高度，每次处理较矮的一侧 | [P0042TrappingRainWater.java](src/leetcode/two-pointers/P0042TrappingRainWater.java) |
 | 49 | Group Anagrams / 字母异位词分组 | Medium | hash | 排序后的字符串作哈希键，O(n·k log k) | [P0049GroupAnagrams.java](src/leetcode/hash/P0049GroupAnagrams.java) |
 | 128 | Longest Consecutive Sequence / 最长连续序列 | Medium | hash | HashSet O(n) 查找，只从序列起点(num-1 不存在)开始扩展 | [P0128LongestConsecutiveSequence.java](src/leetcode/hash/P0128LongestConsecutiveSequence.java) |
+| 239 | Sliding Window Maximum / 滑动窗口最大值 | Hard | sliding-window | 优先队列存 [数值,下标]，堆顶最大；取堆顶时弹出已滑出窗口的过期元素，O(n log n) | [P0239SlidingWindowMaximum.java](src/leetcode/sliding-window/P0239SlidingWindowMaximum.java) |
 | 283 | Move Zeroes / 移动零 | Easy | two-pointers | 快慢双指针，非零元素依次换到前面，零自动沉底 | [P0283MoveZeroes.java](src/leetcode/two-pointers/P0283MoveZeroes.java) |
 | 438 | Find All Anagrams in a String / 找到字符串中所有字母异位词 | Medium | sliding-window | 固定长度滑动窗口 + 26 位计数数组，Arrays.equals 比较 | [P0438FindAllAnagramsInAString.java](src/leetcode/sliding-window/P0438FindAllAnagramsInAString.java) |
 | 560 | Subarray Sum Equals K / 和为 K 的子数组 | Medium | array | 暴力枚举所有子数组，O(n²) | [P0560SubarraySumEqualsK.java](src/leetcode/array/P0560SubarraySumEqualsK.java) |
