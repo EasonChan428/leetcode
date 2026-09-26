@@ -58,6 +58,7 @@ leetcode-java/
 | 56 | Merge Intervals / 合并区间 | Medium | intervals | 按左端点排序 + 一次遍历合并；返回前用 Arrays.copyOf 截取 size+1 个有效区间 | [P0056MergeIntervals.java](src/leetcode/intervals/P0056MergeIntervals.java) |
 | 76 | Minimum Window Substring / 最小覆盖子串 | Hard | sliding-window | 滑动窗口：r 扩张到覆盖 t，再收缩 l 取最小；need 计数判断是否覆盖，O(n) | [P0076MinimumWindowSubstring.java](src/leetcode/sliding-window/P0076MinimumWindowSubstring.java) |
 | 128 | Longest Consecutive Sequence / 最长连续序列 | Medium | hash | HashSet O(n) 查找，只从序列起点(num-1 不存在)开始扩展 | [P0128LongestConsecutiveSequence.java](src/leetcode/hash/P0128LongestConsecutiveSequence.java) |
+| 189 | Rotate Array | Medium | array | 三次反转，原地 O(1) 空间 | [P0189RotateArray.java](src/leetcode/array/P0189RotateArray.java) |
 | 239 | Sliding Window Maximum / 滑动窗口最大值 | Hard | sliding-window | 优先队列存 [数值,下标]，堆顶最大；取堆顶时弹出已滑出窗口的过期元素，O(n log n) | [P0239SlidingWindowMaximum.java](src/leetcode/sliding-window/P0239SlidingWindowMaximum.java) |
 | 283 | Move Zeroes / 移动零 | Easy | two-pointers | 快慢双指针，非零元素依次换到前面，零自动沉底 | [P0283MoveZeroes.java](src/leetcode/two-pointers/P0283MoveZeroes.java) |
 | 438 | Find All Anagrams in a String / 找到字符串中所有字母异位词 | Medium | sliding-window | 固定长度滑动窗口 + 26 位计数数组，Arrays.equals 比较 | [P0438FindAllAnagramsInAString.java](src/leetcode/sliding-window/P0438FindAllAnagramsInAString.java) |
