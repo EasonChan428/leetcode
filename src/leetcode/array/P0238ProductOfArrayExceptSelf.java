@@ -1,7 +1,7 @@
 class P0238ProductOfArrayExceptSelf {
     public int[] productExceptSelf(int[] nums) {
         //用两个数组存储前后缀积
-        if(nums == null) return new int[0];
+        if (nums == null || nums.length == 0) return new int[0];
         int n = nums.length;
         int[] left = new int [n];
         int[] right = new int [n];
