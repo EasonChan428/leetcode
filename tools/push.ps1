@@ -66,6 +66,14 @@ for ($i = 1; $i -le $MaxAttempts; $i++) {
         exit 0
     }
 
+    # 兜底：极少数情况下连接在收尾阶段被重置，git 会打印「Everything up-to-date」却返回非 0。
+    # 这行输出只可能在「远端已等于本地」时出现，按定义就是成功，绝不能当失败继续空转重试。
+    if (($out -join "`n") -match 'Everything up-to-date') {
+        $out | ForEach-Object { Write-Host "  $_" }
+        Write-Host "推送成功 ✅（远端已是最新，无需传输）" -ForegroundColor Green
+        exit 0
+    }
+
     $last = ($out | Select-Object -Last 1)
     Write-Host "  推送失败：$last" -ForegroundColor DarkYellow
     Start-Sleep -Seconds $IntervalSeconds
