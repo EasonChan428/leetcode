@@ -41,6 +41,20 @@ function Test-TcpFast {
     finally { try { $client.Close() } catch { } }
 }
 
+function Test-RemoteRef {
+    param([string]$Root, [string]$RemoteName, [string]$BranchName, [string]$ExpectSha, [int]$Tries = 3)
+    for ($k = 1; $k -le $Tries; $k++) {
+        $line = git -C $Root ls-remote $RemoteName "refs/heads/$BranchName" 2>$null
+        if ($LASTEXITCODE -eq 0 -and $line) {
+            $sha = ($line -split '\s+')[0].Trim()
+            if ($sha -eq $ExpectSha) { return 'match' }
+            return 'mismatch'
+        }
+        Start-Sleep -Seconds 5
+    }
+    return 'unknown'
+}
+
 if ([string]::IsNullOrWhiteSpace($Branch)) {
     $Branch = (git -C $repoRoot rev-parse --abbrev-ref HEAD).Trim()
 }
@@ -59,18 +73,32 @@ for ($i = 1; $i -le $MaxAttempts; $i++) {
     Write-Host "[$ts] $i/$MaxAttempts  端口通，尝试推送" -ForegroundColor Gray
     $out = git -C $repoRoot push $Remote $Branch 2>&1
     $code = $LASTEXITCODE
+    $joined = ($out -join "`n")
 
-    if ($code -eq 0) {
-        $out | ForEach-Object { Write-Host "  $_" }
-        Write-Host "推送成功 ✅" -ForegroundColor Green
-        exit 0
-    }
+    # 输出里带 error: / fatal: 时，即使末尾出现「Everything up-to-date」也不能算成功。
+    # 实测踩过（血泪）：连接中途断开时 git 会打出
+    #     error: RPC failed; curl 52 Empty reply from server
+    #     fatal: the remote end hung up unexpectedly
+    #     Everything up-to-date
+    # 退出码非 0，而远端其实还是旧提交（用 ls-remote 核对过）。所以必须要求没有错误行。
+    $hasErrorLine = $joined -match '(?m)^\s*(error|fatal):'
+    $looksOk = ($code -eq 0) -or (($joined -match 'Everything up-to-date') -and (-not $hasErrorLine))
 
-    # 兜底：极少数情况下连接在收尾阶段被重置，git 会打印「Everything up-to-date」却返回非 0。
-    # 这行输出只可能在「远端已等于本地」时出现，按定义就是成功，绝不能当失败继续空转重试。
-    if (($out -join "`n") -match 'Everything up-to-date') {
+    if ($looksOk) {
         $out | ForEach-Object { Write-Host "  $_" }
-        Write-Host "推送成功 ✅（远端已是最新，无需传输）" -ForegroundColor Green
+        $head = (git -C $repoRoot rev-parse HEAD).Trim()
+        $verdict = Test-RemoteRef -Root $repoRoot -RemoteName $Remote -BranchName $Branch -ExpectSha $head -Tries 3
+
+        if ($verdict -eq 'mismatch') {
+            Write-Host "  远端 ref 仍是旧的，本次推送未真正生效，继续重试" -ForegroundColor DarkYellow
+            Start-Sleep -Seconds $IntervalSeconds
+            continue
+        }
+        if ($verdict -eq 'match') {
+            Write-Host "推送成功 ✅  已核对远端 $Remote/$Branch = $head" -ForegroundColor Green
+            exit 0
+        }
+        Write-Host "推送成功 ✅，但没能连上远端做独立核对（本地提交是安全的）" -ForegroundColor Yellow
         exit 0
     }
 
