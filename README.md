@@ -6,7 +6,10 @@ LeetCode 题解（Java）。
 
 - **一题一文件**，类名唯一：`P` + 四位题号 + 驼峰题名，例如 `P0001TwoSum`。
 - **不写 `package` 声明**，文件按主题放在 `src/leetcode/<主题>/` 下。
-  现有主题：`array`、`matrix`、`two-pointers`、`sliding-window`、`hash`、`dp`、`intervals`。
+  现有主题：`array`、`matrix`、`linked-list`、`two-pointers`、`sliding-window`、`hash`、`dp`、`intervals`。
+- 题目之外的**共用定义**放在 `src/leetcode/common/`（目前只有 `ListNode`）。LeetCode 把
+  `ListNode` / `TreeNode` 的定义写在每道题的注释里，复制出来不含可编译的定义，直接存盘会报
+  「找不到符号」；而默认包里不能重复声明同名类，所以链表题的节点定义**统一用 `common/ListNode.java` 这一份**，各题文件里不要再各写一份。
 - 之所以每题都用唯一类名，是因为 Java 的默认包只有一个，多个叫 `Solution` 的类放在一起会编译报错「重复: Solution」。唯一类名让整个 `src` 可以一次性编译通过。
 
 ## 目录结构
@@ -21,8 +24,12 @@ leetcode-java/
 │   └── push.ps1                  # 带自动重试的 git push
 └── src/
     └── leetcode/
+        ├── common/
+        │   └── ListNode.java     # 链表题共用节点定义（不是某道题）
         ├── array/
         │   └── P0001TwoSum.java
+        ├── linked-list/
+        │   └── P0160IntersectionOfTwoLinkedLists.java
         └── matrix/
             ├── P0048RotateImage.java
             ├── P0054SpiralMatrix.java
@@ -68,6 +75,7 @@ leetcode-java/
 | 73 | Set Matrix Zeroes / 矩阵置零 | Medium | matrix | 首行首列当标记位，O(1) 额外空间 | [P0073SetMatrixZeroes.java](src/leetcode/matrix/P0073SetMatrixZeroes.java) |
 | 76 | Minimum Window Substring / 最小覆盖子串 | Hard | sliding-window | 滑动窗口：r 扩张到覆盖 t，再收缩 l 取最小；need 计数判断是否覆盖，O(n) | [P0076MinimumWindowSubstring.java](src/leetcode/sliding-window/P0076MinimumWindowSubstring.java) |
 | 128 | Longest Consecutive Sequence / 最长连续序列 | Medium | hash | HashSet O(n) 查找，只从序列起点(num-1 不存在)开始扩展 | [P0128LongestConsecutiveSequence.java](src/leetcode/hash/P0128LongestConsecutiveSequence.java) |
+| 160 | Intersection of Two Linked Lists / 相交链表 | Easy | linked-list | 双指针互换链表头，各自走 a+b-c 步后相遇；不相交则同时为 null | [P0160IntersectionOfTwoLinkedLists.java](src/leetcode/linked-list/P0160IntersectionOfTwoLinkedLists.java) |
 | 189 | Rotate Array | Medium | array | 三次反转，原地 O(1) 空间 | [P0189RotateArray.java](src/leetcode/array/P0189RotateArray.java) |
 | 238 | Product of Array Except Self | Medium | array | 前后缀积（left/right 两个数组） | [P0238ProductOfArrayExceptSelf.java](src/leetcode/array/P0238ProductOfArrayExceptSelf.java) |
 | 239 | Sliding Window Maximum / 滑动窗口最大值 | Hard | sliding-window | 优先队列存 [数值,下标]，堆顶最大；取堆顶时弹出已滑出窗口的过期元素，O(n log n) | [P0239SlidingWindowMaximum.java](src/leetcode/sliding-window/P0239SlidingWindowMaximum.java) |
