@@ -29,7 +29,8 @@ leetcode-java/
         ├── array/
         │   └── P0001TwoSum.java
         ├── linked-list/
-        │   └── P0160IntersectionOfTwoLinkedLists.java
+        │   ├── P0160IntersectionOfTwoLinkedLists.java
+        │   └── P0206ReverseLinkedList.java
         └── matrix/
             ├── P0048RotateImage.java
             ├── P0054SpiralMatrix.java
@@ -77,6 +78,7 @@ leetcode-java/
 | 128 | Longest Consecutive Sequence / 最长连续序列 | Medium | hash | HashSet O(n) 查找，只从序列起点(num-1 不存在)开始扩展 | [P0128LongestConsecutiveSequence.java](src/leetcode/hash/P0128LongestConsecutiveSequence.java) |
 | 160 | Intersection of Two Linked Lists / 相交链表 | Easy | linked-list | 双指针互换链表头，各自走 a+b-c 步后相遇；不相交则同时为 null | [P0160IntersectionOfTwoLinkedLists.java](src/leetcode/linked-list/P0160IntersectionOfTwoLinkedLists.java) |
 | 189 | Rotate Array | Medium | array | 三次反转，原地 O(1) 空间 | [P0189RotateArray.java](src/leetcode/array/P0189RotateArray.java) |
+| 206 | Reverse Linked List / 反转链表 | Easy | linked-list | 迭代：pre/cur 双指针，逐个把 next 指向前驱，O(n) 时间 O(1) 空间 | [P0206ReverseLinkedList.java](src/leetcode/linked-list/P0206ReverseLinkedList.java) |
 | 238 | Product of Array Except Self | Medium | array | 前后缀积（left/right 两个数组） | [P0238ProductOfArrayExceptSelf.java](src/leetcode/array/P0238ProductOfArrayExceptSelf.java) |
 | 239 | Sliding Window Maximum / 滑动窗口最大值 | Hard | sliding-window | 优先队列存 [数值,下标]，堆顶最大；取堆顶时弹出已滑出窗口的过期元素，O(n log n) | [P0239SlidingWindowMaximum.java](src/leetcode/sliding-window/P0239SlidingWindowMaximum.java) |
 | 240 | Search a 2D Matrix II / 搜索二维矩阵 II | Medium | matrix | 左下角标志数：> target 消一行，< target 消一列 | [P0240SearchA2DMatrixII.java](src/leetcode/matrix/P0240SearchA2DMatrixII.java) |
