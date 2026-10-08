@@ -29,6 +29,7 @@ leetcode-java/
         ├── array/
         │   └── P0001TwoSum.java
         ├── linked-list/
+        │   ├── P0021MergeTwoSortedLists.java
         │   ├── P0141LinkedListCycle.java
         │   ├── P0142LinkedListCycleII.java
         │   ├── P0160IntersectionOfTwoLinkedLists.java
@@ -69,6 +70,7 @@ leetcode-java/
 | 3 | Longest Substring Without Repeating Characters / 无重复字符的最长子串 | Medium | sliding-window | 滑动窗口 + HashMap 记录字符上次出现位置，left 不回退 | [P0003LongestSubstringWithoutRepeatingCharacters.java](src/leetcode/sliding-window/P0003LongestSubstringWithoutRepeatingCharacters.java) |
 | 11 | Container With Most Water / 盛最多水的容器 | Medium | two-pointers | 左右双指针，每次移动较矮的一侧，面积 O(n) 求最大 | [P0011ContainerWithMostWater.java](src/leetcode/two-pointers/P0011ContainerWithMostWater.java) |
 | 15 | 3Sum / 三数之和 | Medium | two-pointers | 排序 + 双指针夹逼，三层去重 | [P0015ThreeSum.java](src/leetcode/two-pointers/P0015ThreeSum.java) |
+| 21 | Merge Two Sorted Lists / 合并两个有序链表 | Easy | linked-list | 哑结点 + 双指针逐个接较小者；收尾接上未空的那条，返回 dummy.next | [P0021MergeTwoSortedLists.java](src/leetcode/linked-list/P0021MergeTwoSortedLists.java) |
 | 41 | First Missing Positive | Hard | array | 原地哈希：数字 x 放到下标 x-1，环形交换 | [P0041FirstMissingPositive.java](src/leetcode/array/P0041FirstMissingPositive.java) |
 | 42 | Trapping Rain Water / 接雨水 | Hard | two-pointers | 双指针 + 左右最大高度，每次处理较矮的一侧 | [P0042TrappingRainWater.java](src/leetcode/two-pointers/P0042TrappingRainWater.java) |
 | 48 | Rotate Image / 旋转图像 | Medium | matrix | 上下翻转 + 主对角线翻转 = 顺时针 90 度 | [P0048RotateImage.java](src/leetcode/matrix/P0048RotateImage.java) |
