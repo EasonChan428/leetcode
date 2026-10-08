@@ -30,6 +30,7 @@ leetcode-java/
         │   └── P0001TwoSum.java
         ├── linked-list/
         │   ├── P0141LinkedListCycle.java
+        │   ├── P0142LinkedListCycleII.java
         │   ├── P0160IntersectionOfTwoLinkedLists.java
         │   ├── P0206ReverseLinkedList.java
         │   └── P0234PalindromeLinkedList.java
@@ -79,6 +80,7 @@ leetcode-java/
 | 76 | Minimum Window Substring / 最小覆盖子串 | Hard | sliding-window | 滑动窗口：r 扩张到覆盖 t，再收缩 l 取最小；need 计数判断是否覆盖，O(n) | [P0076MinimumWindowSubstring.java](src/leetcode/sliding-window/P0076MinimumWindowSubstring.java) |
 | 128 | Longest Consecutive Sequence / 最长连续序列 | Medium | hash | HashSet O(n) 查找，只从序列起点(num-1 不存在)开始扩展 | [P0128LongestConsecutiveSequence.java](src/leetcode/hash/P0128LongestConsecutiveSequence.java) |
 | 141 | Linked List Cycle / 环形链表 | Easy | linked-list | 快慢指针 Floyd 判圈：fast 从 head.next 出发避免初始即相遇；相遇→有环，fast 越界→无环 | [P0141LinkedListCycle.java](src/leetcode/linked-list/P0141LinkedListCycle.java) |
+| 142 | Linked List Cycle II / 环形链表 II | Medium | linked-list | Floyd 判圈后，ptr 从 head 与 slow 同速前进，相遇处即入环点（因 a = kL - b） | [P0142LinkedListCycleII.java](src/leetcode/linked-list/P0142LinkedListCycleII.java) |
 | 160 | Intersection of Two Linked Lists / 相交链表 | Easy | linked-list | 双指针互换链表头，各自走 a+b-c 步后相遇；不相交则同时为 null | [P0160IntersectionOfTwoLinkedLists.java](src/leetcode/linked-list/P0160IntersectionOfTwoLinkedLists.java) |
 | 189 | Rotate Array | Medium | array | 三次反转，原地 O(1) 空间 | [P0189RotateArray.java](src/leetcode/array/P0189RotateArray.java) |
 | 206 | Reverse Linked List / 反转链表 | Easy | linked-list | 迭代：pre/cur 双指针，逐个把 next 指向前驱，O(n) 时间 O(1) 空间 | [P0206ReverseLinkedList.java](src/leetcode/linked-list/P0206ReverseLinkedList.java) |
