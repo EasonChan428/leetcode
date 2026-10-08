@@ -29,6 +29,7 @@ leetcode-java/
         ├── array/
         │   └── P0001TwoSum.java
         ├── linked-list/
+        │   ├── P0002AddTwoNumbers.java
         │   ├── P0021MergeTwoSortedLists.java
         │   ├── P0141LinkedListCycle.java
         │   ├── P0142LinkedListCycleII.java
@@ -67,6 +68,7 @@ leetcode-java/
 | 题号 | 题目 | 难度 | 主题 | 解法要点 | 文件 |
 | ---: | --- | :--: | --- | --- | --- |
 | 1 | Two Sum / 两数之和 | Easy | array | 暴力双重循环，O(n²) | [P0001TwoSum.java](src/leetcode/array/P0001TwoSum.java) |
+| 2 | Add Two Numbers / 两数相加 | Medium | linked-list | 逐位相加带 carry；短链补 0，循环结束后 carry>0 再补一个节点 | [P0002AddTwoNumbers.java](src/leetcode/linked-list/P0002AddTwoNumbers.java) |
 | 3 | Longest Substring Without Repeating Characters / 无重复字符的最长子串 | Medium | sliding-window | 滑动窗口 + HashMap 记录字符上次出现位置，left 不回退 | [P0003LongestSubstringWithoutRepeatingCharacters.java](src/leetcode/sliding-window/P0003LongestSubstringWithoutRepeatingCharacters.java) |
 | 11 | Container With Most Water / 盛最多水的容器 | Medium | two-pointers | 左右双指针，每次移动较矮的一侧，面积 O(n) 求最大 | [P0011ContainerWithMostWater.java](src/leetcode/two-pointers/P0011ContainerWithMostWater.java) |
 | 15 | 3Sum / 三数之和 | Medium | two-pointers | 排序 + 双指针夹逼，三层去重 | [P0015ThreeSum.java](src/leetcode/two-pointers/P0015ThreeSum.java) |
