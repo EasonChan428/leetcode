@@ -7,9 +7,11 @@ LeetCode 题解（Java）。
 - **一题一文件**，类名唯一：`P` + 四位题号 + 驼峰题名，例如 `P0001TwoSum`。
 - **不写 `package` 声明**，文件按主题放在 `src/leetcode/<主题>/` 下。
   现有主题：`array`、`matrix`、`linked-list`、`two-pointers`、`sliding-window`、`hash`、`dp`、`intervals`。
-- 题目之外的**共用定义**放在 `src/leetcode/common/`（目前只有 `ListNode`）。LeetCode 把
-  `ListNode` / `TreeNode` 的定义写在每道题的注释里，复制出来不含可编译的定义，直接存盘会报
-  「找不到符号」；而默认包里不能重复声明同名类，所以链表题的节点定义**统一用 `common/ListNode.java` 这一份**，各题文件里不要再各写一份。
+- 题目之外的**共用定义**放在 `src/leetcode/common/`（目前有 `ListNode`、`Node`）。LeetCode 把
+  `ListNode` / `Node` / `TreeNode` 的定义写在每道题的注释里，复制出来不含可编译的定义，直接存盘会报
+  「找不到符号」；而默认包里不能重复声明同名类，所以这类节点**统一用 `common/` 里的那一份**，各题文件里不要再各写一份。
+  > `Node` 这个名字在 LeetCode 里被多种结构复用（随机链表 / 克隆图 / N 叉树 / 右侧指针），字段并不一样，
+  > 目前 `common/Node.java` 是第 138 题那版（`val` / `next` / `random`）。
 - 之所以每题都用唯一类名，是因为 Java 的默认包只有一个，多个叫 `Solution` 的类放在一起会编译报错「重复: Solution」。唯一类名让整个 `src` 可以一次性编译通过。
 
 ## 目录结构
@@ -25,7 +27,8 @@ leetcode-java/
 └── src/
     └── leetcode/
         ├── common/
-        │   └── ListNode.java     # 链表题共用节点定义（不是某道题）
+        │   ├── ListNode.java     # 链表题共用节点定义（不是某道题）
+        │   └── Node.java         # 带 random 指针的节点定义（第 138 题用）
         ├── array/
         │   └── P0001TwoSum.java
         ├── linked-list/
@@ -34,6 +37,7 @@ leetcode-java/
         │   ├── P0021MergeTwoSortedLists.java
         │   ├── P0024SwapNodesInPairs.java
         │   ├── P0025ReverseNodesInKGroup.java
+        │   ├── P0138CopyListWithRandomPointer.java
         │   ├── P0141LinkedListCycle.java
         │   ├── P0142LinkedListCycleII.java
         │   ├── P0160IntersectionOfTwoLinkedLists.java
@@ -89,6 +93,7 @@ leetcode-java/
 | 73 | Set Matrix Zeroes / 矩阵置零 | Medium | matrix | 首行首列当标记位，O(1) 额外空间 | [P0073SetMatrixZeroes.java](src/leetcode/matrix/P0073SetMatrixZeroes.java) |
 | 76 | Minimum Window Substring / 最小覆盖子串 | Hard | sliding-window | 滑动窗口：r 扩张到覆盖 t，再收缩 l 取最小；need 计数判断是否覆盖，O(n) | [P0076MinimumWindowSubstring.java](src/leetcode/sliding-window/P0076MinimumWindowSubstring.java) |
 | 128 | Longest Consecutive Sequence / 最长连续序列 | Medium | hash | HashSet O(n) 查找，只从序列起点(num-1 不存在)开始扩展 | [P0128LongestConsecutiveSequence.java](src/leetcode/hash/P0128LongestConsecutiveSequence.java) |
+| 138 | Copy List with Random Pointer / 随机链表的复制 | Medium | linked-list | 拼接 + 拆分：原/新节点交错成一条链，cur.random.next 即新节点的 random；最后拆回两条链并单独处理原链尾 | [P0138CopyListWithRandomPointer.java](src/leetcode/linked-list/P0138CopyListWithRandomPointer.java) |
 | 141 | Linked List Cycle / 环形链表 | Easy | linked-list | 快慢指针 Floyd 判圈：fast 从 head.next 出发避免初始即相遇；相遇→有环，fast 越界→无环 | [P0141LinkedListCycle.java](src/leetcode/linked-list/P0141LinkedListCycle.java) |
 | 142 | Linked List Cycle II / 环形链表 II | Medium | linked-list | Floyd 判圈后，ptr 从 head 与 slow 同速前进，相遇处即入环点（因 a = kL - b） | [P0142LinkedListCycleII.java](src/leetcode/linked-list/P0142LinkedListCycleII.java) |
 | 160 | Intersection of Two Linked Lists / 相交链表 | Easy | linked-list | 双指针互换链表头，各自走 a+b-c 步后相遇；不相交则同时为 null | [P0160IntersectionOfTwoLinkedLists.java](src/leetcode/linked-list/P0160IntersectionOfTwoLinkedLists.java) |
