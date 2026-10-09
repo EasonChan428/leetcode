@@ -32,6 +32,7 @@ leetcode-java/
         │   ├── P0002AddTwoNumbers.java
         │   ├── P0019RemoveNthNodeFromEndOfList.java
         │   ├── P0021MergeTwoSortedLists.java
+        │   ├── P0024SwapNodesInPairs.java
         │   ├── P0141LinkedListCycle.java
         │   ├── P0142LinkedListCycleII.java
         │   ├── P0160IntersectionOfTwoLinkedLists.java
@@ -75,6 +76,7 @@ leetcode-java/
 | 15 | 3Sum / 三数之和 | Medium | two-pointers | 排序 + 双指针夹逼，三层去重 | [P0015ThreeSum.java](src/leetcode/two-pointers/P0015ThreeSum.java) |
 | 19 | Remove Nth Node From End of List / 删除链表的倒数第 N 个结点 | Medium | linked-list | 两次遍历：先数长度 sz 再走到 sz-n 处跳过；注释附一次遍历的 dummy + 快慢指针最优解 | [P0019RemoveNthNodeFromEndOfList.java](src/leetcode/linked-list/P0019RemoveNthNodeFromEndOfList.java) |
 | 21 | Merge Two Sorted Lists / 合并两个有序链表 | Easy | linked-list | 哑结点 + 双指针逐个接较小者；收尾接上未空的那条，返回 dummy.next | [P0021MergeTwoSortedLists.java](src/leetcode/linked-list/P0021MergeTwoSortedLists.java) |
+| 24 | Swap Nodes in Pairs / 两两交换链表中的节点 | Medium | linked-list | 哑结点 + 三指针换序：先存下一组起点 nextPair 再改指针，避免丢失后续链 | [P0024SwapNodesInPairs.java](src/leetcode/linked-list/P0024SwapNodesInPairs.java) |
 | 41 | First Missing Positive | Hard | array | 原地哈希：数字 x 放到下标 x-1，环形交换 | [P0041FirstMissingPositive.java](src/leetcode/array/P0041FirstMissingPositive.java) |
 | 42 | Trapping Rain Water / 接雨水 | Hard | two-pointers | 双指针 + 左右最大高度，每次处理较矮的一侧 | [P0042TrappingRainWater.java](src/leetcode/two-pointers/P0042TrappingRainWater.java) |
 | 48 | Rotate Image / 旋转图像 | Medium | matrix | 上下翻转 + 主对角线翻转 = 顺时针 90 度 | [P0048RotateImage.java](src/leetcode/matrix/P0048RotateImage.java) |
