@@ -30,6 +30,7 @@ class P0138CopyListWithRandomPointer {
         cur = head;
         while(cur != null){
             if(cur.random != null){
+                //必需！否则 null.next 直接 NPE
                 cur.next.random = cur.random.next; //该思路最核心的一句代码！
             }
             cur = cur.next.next;
