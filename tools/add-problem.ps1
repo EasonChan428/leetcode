@@ -91,7 +91,12 @@ function ConvertTo-PascalCase {
 
 # ---------- 1. 算出类名和路径 ----------
 if ([string]::IsNullOrWhiteSpace($Slug)) {
-    $Slug = ConvertTo-PascalCase $Title
+    # Title 一般写成「English / 中文」，这里只取 / 之前的部分来推类名。
+    # 否则中文里夹带的单个拉丁字母会被当成一个独立词拼到类名尾部 —— 实测
+    # 「Remove Nth Node From End of List / 删除链表的倒数第 N 个结点」
+    # 会推出 ...RemoveNthNodeFromEndOfListN，凭空多一个 N。
+    $Slug = ConvertTo-PascalCase (($Title -split '/')[0])
+    if ([string]::IsNullOrWhiteSpace($Slug)) { $Slug = ConvertTo-PascalCase $Title }
     if ([string]::IsNullOrWhiteSpace($Slug)) {
         throw "Title「$Title」里没有英文字母，无法推导类名。请补一个 -Slug，例如 -Slug TwoSum"
     }
