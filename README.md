@@ -6,7 +6,7 @@ LeetCode 题解（Java）。
 
 - **一题一文件**，类名唯一：`P` + 四位题号 + 驼峰题名，例如 `P0001TwoSum`。
 - **不写 `package` 声明**，文件按主题放在 `src/leetcode/<主题>/` 下。
-  现有主题：`array`、`matrix`、`linked-list`、`two-pointers`、`sliding-window`、`hash`、`dp`、`intervals`。
+  现有主题：`array`、`matrix`、`linked-list`、`two-pointers`、`sliding-window`、`hash`、`dp`、`intervals`、`design`。
 - 题目之外的**共用定义**放在 `src/leetcode/common/`（目前有 `ListNode`、`Node`）。LeetCode 把
   `ListNode` / `Node` / `TreeNode` 的定义写在每道题的注释里，复制出来不含可编译的定义，直接存盘会报
   「找不到符号」；而默认包里不能重复声明同名类，所以这类节点**统一用 `common/` 里的那一份**，各题文件里不要再各写一份。
@@ -31,6 +31,8 @@ leetcode-java/
         │   └── Node.java         # 带 random 指针的节点定义（第 138 题用）
         ├── array/
         │   └── P0001TwoSum.java
+        ├── design/
+        │   └── P0146LRUCache.java
         ├── linked-list/
         │   ├── P0002AddTwoNumbers.java
         │   ├── P0019RemoveNthNodeFromEndOfList.java
@@ -99,6 +101,7 @@ leetcode-java/
 | 138 | Copy List with Random Pointer / 随机链表的复制 | Medium | linked-list | 拼接 + 拆分：原/新节点交错成一条链，cur.random.next 即新节点的 random；最后拆回两条链并单独处理原链尾 | [P0138CopyListWithRandomPointer.java](src/leetcode/linked-list/P0138CopyListWithRandomPointer.java) |
 | 141 | Linked List Cycle / 环形链表 | Easy | linked-list | 快慢指针 Floyd 判圈：fast 从 head.next 出发避免初始即相遇；相遇→有环，fast 越界→无环 | [P0141LinkedListCycle.java](src/leetcode/linked-list/P0141LinkedListCycle.java) |
 | 142 | Linked List Cycle II / 环形链表 II | Medium | linked-list | Floyd 判圈后，ptr 从 head 与 slow 同速前进，相遇处即入环点（因 a = kL - b） | [P0142LinkedListCycleII.java](src/leetcode/linked-list/P0142LinkedListCycleII.java) |
+| 146 | LRU Cache / LRU 缓存 | Medium | design | 哈希表 + 双向链表（伪头/伪尾哨兵）：get/put 均 O(1)；put 超容量时摘掉尾结点并从表中删掉它的 key | [P0146LRUCache.java](src/leetcode/design/P0146LRUCache.java) |
 | 148 | Sort List / 排序链表 | Medium | linked-list | 自底向上归并排序（迭代）：每轮按 subLength 切段两两合并，O(n log n) 时间 O(1) 空间 | [P0148SortList.java](src/leetcode/linked-list/P0148SortList.java) |
 | 160 | Intersection of Two Linked Lists / 相交链表 | Easy | linked-list | 双指针互换链表头，各自走 a+b-c 步后相遇；不相交则同时为 null | [P0160IntersectionOfTwoLinkedLists.java](src/leetcode/linked-list/P0160IntersectionOfTwoLinkedLists.java) |
 | 189 | Rotate Array | Medium | array | 三次反转，原地 O(1) 空间 | [P0189RotateArray.java](src/leetcode/array/P0189RotateArray.java) |
