@@ -55,6 +55,7 @@ leetcode-java/
         │   └── P0240SearchA2DMatrixII.java
         └── tree/
             ├── P0094BinaryTreeInorderTraversal.java
+            ├── P0101SymmetricTree.java
             ├── P0104MaximumDepthOfBinaryTree.java
             └── P0226InvertBinaryTree.java
 ```
@@ -103,6 +104,7 @@ leetcode-java/
 | 73 | Set Matrix Zeroes / 矩阵置零 | Medium | matrix | 首行首列当标记位，O(1) 额外空间 | [P0073SetMatrixZeroes.java](src/leetcode/matrix/P0073SetMatrixZeroes.java) |
 | 76 | Minimum Window Substring / 最小覆盖子串 | Hard | sliding-window | 滑动窗口：r 扩张到覆盖 t，再收缩 l 取最小；need 计数判断是否覆盖，O(n) | [P0076MinimumWindowSubstring.java](src/leetcode/sliding-window/P0076MinimumWindowSubstring.java) |
 | 94 | Binary Tree Inorder Traversal / 二叉树的中序遍历 | Easy | tree | 迭代法用显式栈模拟递归：一路压左孩子，弹出即访问，再转向右孩子；注释附递归版 | [P0094BinaryTreeInorderTraversal.java](src/leetcode/tree/P0094BinaryTreeInorderTraversal.java) |
+| 101 | Symmetric Tree / 对称二叉树 | Easy | tree | 递归比较镜像对：左的左 vs 右的右、左的右 vs 右的左（交叉比较才是镜像） | [P0101SymmetricTree.java](src/leetcode/tree/P0101SymmetricTree.java) |
 | 104 | Maximum Depth of Binary Tree / 二叉树的最大深度 | Easy | tree | 后序递归：空结点返回 0，否则 max(左深度, 右深度) + 1 | [P0104MaximumDepthOfBinaryTree.java](src/leetcode/tree/P0104MaximumDepthOfBinaryTree.java) |
 | 128 | Longest Consecutive Sequence / 最长连续序列 | Medium | hash | HashSet O(n) 查找，只从序列起点(num-1 不存在)开始扩展 | [P0128LongestConsecutiveSequence.java](src/leetcode/hash/P0128LongestConsecutiveSequence.java) |
 | 138 | Copy List with Random Pointer / 随机链表的复制 | Medium | linked-list | 拼接 + 拆分：原/新节点交错成一条链，cur.random.next 即新节点的 random；最后拆回两条链并单独处理原链尾 | [P0138CopyListWithRandomPointer.java](src/leetcode/linked-list/P0138CopyListWithRandomPointer.java) |
