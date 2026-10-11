@@ -57,7 +57,8 @@ leetcode-java/
             ├── P0094BinaryTreeInorderTraversal.java
             ├── P0101SymmetricTree.java
             ├── P0104MaximumDepthOfBinaryTree.java
-            └── P0226InvertBinaryTree.java
+            ├── P0226InvertBinaryTree.java
+            └── P0543DiameterOfBinaryTree.java
 ```
 
 ## 推送（网络不稳时用这个）
@@ -122,6 +123,7 @@ leetcode-java/
 | 240 | Search a 2D Matrix II / 搜索二维矩阵 II | Medium | matrix | 左下角标志数：> target 消一行，< target 消一列 | [P0240SearchA2DMatrixII.java](src/leetcode/matrix/P0240SearchA2DMatrixII.java) |
 | 283 | Move Zeroes / 移动零 | Easy | two-pointers | 快慢双指针，非零元素依次换到前面，零自动沉底 | [P0283MoveZeroes.java](src/leetcode/two-pointers/P0283MoveZeroes.java) |
 | 438 | Find All Anagrams in a String / 找到字符串中所有字母异位词 | Medium | sliding-window | 固定长度滑动窗口 + 26 位计数数组，Arrays.equals 比较 | [P0438FindAllAnagramsInAString.java](src/leetcode/sliding-window/P0438FindAllAnagramsInAString.java) |
+| 543 | Diameter of Binary Tree / 二叉树的直径 | Easy | tree | 在 104 的骨架上加一句：每到一个结点就用「左深+右深」更新全局最大直径；空返回 0，叶子返回 1 | [P0543DiameterOfBinaryTree.java](src/leetcode/tree/P0543DiameterOfBinaryTree.java) |
 | 560 | Subarray Sum Equals K / 和为 K 的子数组 | Medium | array | 暴力枚举所有子数组，O(n²) | [P0560SubarraySumEqualsK.java](src/leetcode/array/P0560SubarraySumEqualsK.java) |
 <!-- INDEX:END -->
 
