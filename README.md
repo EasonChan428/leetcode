@@ -6,8 +6,8 @@ LeetCode 题解（Java）。
 
 - **一题一文件**，类名唯一：`P` + 四位题号 + 驼峰题名，例如 `P0001TwoSum`。
 - **不写 `package` 声明**，文件按主题放在 `src/leetcode/<主题>/` 下。
-  现有主题：`array`、`matrix`、`linked-list`、`two-pointers`、`sliding-window`、`hash`、`dp`、`intervals`、`design`。
-- 题目之外的**共用定义**放在 `src/leetcode/common/`（目前有 `ListNode`、`Node`）。LeetCode 把
+  现有主题：`array`、`matrix`、`linked-list`、`tree`、`two-pointers`、`sliding-window`、`hash`、`dp`、`intervals`、`design`。
+- 题目之外的**共用定义**放在 `src/leetcode/common/`（目前有 `ListNode`、`Node`、`TreeNode`）。LeetCode 把
   `ListNode` / `Node` / `TreeNode` 的定义写在每道题的注释里，复制出来不含可编译的定义，直接存盘会报
   「找不到符号」；而默认包里不能重复声明同名类，所以这类节点**统一用 `common/` 里的那一份**，各题文件里不要再各写一份。
   > `Node` 这个名字在 LeetCode 里被多种结构复用（随机链表 / 克隆图 / N 叉树 / 右侧指针），字段并不一样，
@@ -28,7 +28,8 @@ leetcode-java/
     └── leetcode/
         ├── common/
         │   ├── ListNode.java     # 链表题共用节点定义（不是某道题）
-        │   └── Node.java         # 带 random 指针的节点定义（第 138 题用）
+        │   ├── Node.java         # 带 random 指针的节点定义（第 138 题用）
+        │   └── TreeNode.java     # 二叉树题共用节点定义
         ├── array/
         │   └── P0001TwoSum.java
         ├── design/
@@ -47,11 +48,13 @@ leetcode-java/
         │   ├── P0160IntersectionOfTwoLinkedLists.java
         │   ├── P0206ReverseLinkedList.java
         │   └── P0234PalindromeLinkedList.java
-        └── matrix/
-            ├── P0048RotateImage.java
-            ├── P0054SpiralMatrix.java
-            ├── P0073SetMatrixZeroes.java
-            └── P0240SearchA2DMatrixII.java
+        ├── matrix/
+        │   ├── P0048RotateImage.java
+        │   ├── P0054SpiralMatrix.java
+        │   ├── P0073SetMatrixZeroes.java
+        │   └── P0240SearchA2DMatrixII.java
+        └── tree/
+            └── P0094BinaryTreeInorderTraversal.java
 ```
 
 ## 推送（网络不稳时用这个）
@@ -97,6 +100,7 @@ leetcode-java/
 | 56 | Merge Intervals / 合并区间 | Medium | intervals | 按左端点排序 + 一次遍历合并；返回前用 Arrays.copyOf 截取 size+1 个有效区间 | [P0056MergeIntervals.java](src/leetcode/intervals/P0056MergeIntervals.java) |
 | 73 | Set Matrix Zeroes / 矩阵置零 | Medium | matrix | 首行首列当标记位，O(1) 额外空间 | [P0073SetMatrixZeroes.java](src/leetcode/matrix/P0073SetMatrixZeroes.java) |
 | 76 | Minimum Window Substring / 最小覆盖子串 | Hard | sliding-window | 滑动窗口：r 扩张到覆盖 t，再收缩 l 取最小；need 计数判断是否覆盖，O(n) | [P0076MinimumWindowSubstring.java](src/leetcode/sliding-window/P0076MinimumWindowSubstring.java) |
+| 94 | Binary Tree Inorder Traversal / 二叉树的中序遍历 | Easy | tree | 迭代法用显式栈模拟递归：一路压左孩子，弹出即访问，再转向右孩子；注释附递归版 | [P0094BinaryTreeInorderTraversal.java](src/leetcode/tree/P0094BinaryTreeInorderTraversal.java) |
 | 128 | Longest Consecutive Sequence / 最长连续序列 | Medium | hash | HashSet O(n) 查找，只从序列起点(num-1 不存在)开始扩展 | [P0128LongestConsecutiveSequence.java](src/leetcode/hash/P0128LongestConsecutiveSequence.java) |
 | 138 | Copy List with Random Pointer / 随机链表的复制 | Medium | linked-list | 拼接 + 拆分：原/新节点交错成一条链，cur.random.next 即新节点的 random；最后拆回两条链并单独处理原链尾 | [P0138CopyListWithRandomPointer.java](src/leetcode/linked-list/P0138CopyListWithRandomPointer.java) |
 | 141 | Linked List Cycle / 环形链表 | Easy | linked-list | 快慢指针 Floyd 判圈：fast 从 head.next 出发避免初始即相遇；相遇→有环，fast 越界→无环 | [P0141LinkedListCycle.java](src/leetcode/linked-list/P0141LinkedListCycle.java) |
