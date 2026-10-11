@@ -27,7 +27,7 @@ class P0543DiameterOfBinaryTree {
         int leftDepth = maxDepth(root.left);
         int rightDepth = maxDepth(root.right);
         // 核心：当前节点作为路径最高点，路径长=左深+右深，和全局maxlen比较，保留更大的值
-        maxlen = Math.max(maxlen, leftDepth + rightDepth);
+        maxlen = Math.max(maxlen, leftDepth + rightDepth); //本代码返回的不是节点计数，是边的数量，所以leftDepth和rightDepth直接相加
         // 返回当前子树的最大深度：左右较大深度 + 当前节点这一层
         return Math.max(leftDepth, rightDepth) + 1;
     }
