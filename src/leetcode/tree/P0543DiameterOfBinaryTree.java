@@ -14,9 +14,10 @@
  * }
  */
 class P0543DiameterOfBinaryTree {
-    public int maxlen = 0;
+    private int maxlen = 0;
 
     public int diameterOfBinaryTree(TreeNode root) {
+        maxlen = 0; // 进函数先归零：字段的值会跨调用保留，不重置的话同一个对象第二次调用会拿到上一次的旧结果
         //计算所有节点的左右子树的最大深度之和，然后比较
         maxDepth(root); // 递归遍历整棵树，更新maxlen
         return maxlen;
