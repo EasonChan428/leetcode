@@ -20,7 +20,7 @@ class P0101SymmetricTree {
         return dfs(root.left, root.right);
     }
     //该题递归思路稍微特别 要记！
-    public boolean dfs(TreeNode left, TreeNode right){
+    private boolean dfs(TreeNode left, TreeNode right){
         //递归的终止条件是两个节点都为空
 		//或者两个节点中有一个为空
 		//或者两个节点的值不相等

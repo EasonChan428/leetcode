@@ -15,7 +15,7 @@ class P0023MergeKSortedLists {
         return merge(lists, 0, lists.length - 1);
     }
 
-    public ListNode merge(ListNode[] lists, int l, int r){
+    private ListNode merge(ListNode[] lists, int l, int r){
         if(l == r) return lists[l];
         if(l > r) return null;
 
@@ -24,7 +24,7 @@ class P0023MergeKSortedLists {
         return mergeTwoLists(merge(lists, l, mid), merge(lists, mid + 1, r));
     }
 
-    public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
+    private ListNode mergeTwoLists(ListNode list1, ListNode list2) {
         ListNode head3 = new ListNode();
         ListNode list3 = head3;
         while(list1 != null && list2 != null){

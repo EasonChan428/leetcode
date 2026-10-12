@@ -23,7 +23,7 @@ class P0543DiameterOfBinaryTree {
         return maxlen;
     }
 
-    public int maxDepth(TreeNode root){
+    private int maxDepth(TreeNode root){
         if(root == null) return 0;
         int leftDepth = maxDepth(root.left);
         int rightDepth = maxDepth(root.right);

@@ -20,7 +20,7 @@ class P0108ConvertSortedArrayToBinarySearchTree {
         return bst(nums, 0, nums.length - 1);
     }
     
-    public TreeNode bst(int[] nums, int left, int right){
+    private TreeNode bst(int[] nums, int left, int right){
         if(left > right) return null;
         // 总是选择中间位置左边的数字作为根节点
         int mid = (left + right) / 2;
