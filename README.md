@@ -55,6 +55,7 @@ leetcode-java/
         │   └── P0240SearchA2DMatrixII.java
         └── tree/
             ├── P0094BinaryTreeInorderTraversal.java
+            ├── P0098ValidateBinarySearchTree.java
             ├── P0101SymmetricTree.java
             ├── P0102BinaryTreeLevelOrderTraversal.java
             ├── P0104MaximumDepthOfBinaryTree.java
@@ -107,6 +108,7 @@ leetcode-java/
 | 73 | Set Matrix Zeroes / 矩阵置零 | Medium | matrix | 首行首列当标记位，O(1) 额外空间 | [P0073SetMatrixZeroes.java](src/leetcode/matrix/P0073SetMatrixZeroes.java) |
 | 76 | Minimum Window Substring / 最小覆盖子串 | Hard | sliding-window | 滑动窗口：r 扩张到覆盖 t，再收缩 l 取最小；need 计数判断是否覆盖，O(n) | [P0076MinimumWindowSubstring.java](src/leetcode/sliding-window/P0076MinimumWindowSubstring.java) |
 | 94 | Binary Tree Inorder Traversal / 二叉树的中序遍历 | Easy | tree | 迭代法用显式栈模拟递归：一路压左孩子，弹出即访问，再转向右孩子；注释附递归版 | [P0094BinaryTreeInorderTraversal.java](src/leetcode/tree/P0094BinaryTreeInorderTraversal.java) |
+| 98 | Validate Binary Search Tree / 验证二叉搜索树 | Medium | tree | 上下界传递：左子树收紧上界、右子树收紧下界，严格比较；上下界必须用 long 装 ±∞ 才能扛住 Integer.MIN/MAX_VALUE | [P0098ValidateBinarySearchTree.java](src/leetcode/tree/P0098ValidateBinarySearchTree.java) |
 | 101 | Symmetric Tree / 对称二叉树 | Easy | tree | 递归比较镜像对：左的左 vs 右的右、左的右 vs 右的左（交叉比较才是镜像） | [P0101SymmetricTree.java](src/leetcode/tree/P0101SymmetricTree.java) |
 | 102 | Binary Tree Level Order Traversal / 二叉树的层序遍历 | Medium | tree | BFS + 队列：每层开始前用 queue.size() 记住本层结点数，一口气处理完这一层（注释附 DFS 递归版） | [P0102BinaryTreeLevelOrderTraversal.java](src/leetcode/tree/P0102BinaryTreeLevelOrderTraversal.java) |
 | 104 | Maximum Depth of Binary Tree / 二叉树的最大深度 | Easy | tree | 后序递归：空结点返回 0，否则 max(左深度, 右深度) + 1 | [P0104MaximumDepthOfBinaryTree.java](src/leetcode/tree/P0104MaximumDepthOfBinaryTree.java) |
