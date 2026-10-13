@@ -60,6 +60,7 @@ leetcode-java/
             ├── P0102BinaryTreeLevelOrderTraversal.java
             ├── P0104MaximumDepthOfBinaryTree.java
             ├── P0108ConvertSortedArrayToBinarySearchTree.java
+            ├── P0114FlattenBinaryTreeToLinkedList.java
             ├── P0199BinaryTreeRightSideView.java
             ├── P0226InvertBinaryTree.java
             ├── P0230KthSmallestElementInABST.java
@@ -115,6 +116,7 @@ leetcode-java/
 | 102 | Binary Tree Level Order Traversal / 二叉树的层序遍历 | Medium | tree | BFS + 队列：每层开始前用 queue.size() 记住本层结点数，一口气处理完这一层（注释附 DFS 递归版） | [P0102BinaryTreeLevelOrderTraversal.java](src/leetcode/tree/P0102BinaryTreeLevelOrderTraversal.java) |
 | 104 | Maximum Depth of Binary Tree / 二叉树的最大深度 | Easy | tree | 后序递归：空结点返回 0，否则 max(左深度, 右深度) + 1 | [P0104MaximumDepthOfBinaryTree.java](src/leetcode/tree/P0104MaximumDepthOfBinaryTree.java) |
 | 108 | Convert Sorted Array to Binary Search Tree / 将有序数组转换为二叉搜索树 | Easy | tree | 取区间中点作根（mid=(left+right)/2 取中间偏左），递归建左右子树 → 天然高度平衡；空区间返回 null | [P0108ConvertSortedArrayToBinarySearchTree.java](src/leetcode/tree/P0108ConvertSortedArrayToBinarySearchTree.java) |
+| 114 | Flatten Binary Tree to Linked List / 二叉树展开为链表 | Medium | tree | Morris 风格原地展开 O(1) 空间：有左子树时先找左子树最右结点、把原右子树接上去，再把左子树搬到右边并置空 left；展平顺序 = 先序 | [P0114FlattenBinaryTreeToLinkedList.java](src/leetcode/tree/P0114FlattenBinaryTreeToLinkedList.java) |
 | 128 | Longest Consecutive Sequence / 最长连续序列 | Medium | hash | HashSet O(n) 查找，只从序列起点(num-1 不存在)开始扩展 | [P0128LongestConsecutiveSequence.java](src/leetcode/hash/P0128LongestConsecutiveSequence.java) |
 | 138 | Copy List with Random Pointer / 随机链表的复制 | Medium | linked-list | 拼接 + 拆分：原/新节点交错成一条链，cur.random.next 即新节点的 random；最后拆回两条链并单独处理原链尾 | [P0138CopyListWithRandomPointer.java](src/leetcode/linked-list/P0138CopyListWithRandomPointer.java) |
 | 141 | Linked List Cycle / 环形链表 | Easy | linked-list | 快慢指针 Floyd 判圈：fast 从 head.next 出发避免初始即相遇；相遇→有环，fast 越界→无环 | [P0141LinkedListCycle.java](src/leetcode/linked-list/P0141LinkedListCycle.java) |
