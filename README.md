@@ -59,6 +59,7 @@ leetcode-java/
             ├── P0101SymmetricTree.java
             ├── P0102BinaryTreeLevelOrderTraversal.java
             ├── P0104MaximumDepthOfBinaryTree.java
+            ├── P0105ConstructBinaryTreeFromPreorderAndInorderTraversal.java
             ├── P0108ConvertSortedArrayToBinarySearchTree.java
             ├── P0114FlattenBinaryTreeToLinkedList.java
             ├── P0199BinaryTreeRightSideView.java
@@ -115,6 +116,7 @@ leetcode-java/
 | 101 | Symmetric Tree / 对称二叉树 | Easy | tree | 递归比较镜像对：左的左 vs 右的右、左的右 vs 右的左（交叉比较才是镜像） | [P0101SymmetricTree.java](src/leetcode/tree/P0101SymmetricTree.java) |
 | 102 | Binary Tree Level Order Traversal / 二叉树的层序遍历 | Medium | tree | BFS + 队列：每层开始前用 queue.size() 记住本层结点数，一口气处理完这一层（注释附 DFS 递归版） | [P0102BinaryTreeLevelOrderTraversal.java](src/leetcode/tree/P0102BinaryTreeLevelOrderTraversal.java) |
 | 104 | Maximum Depth of Binary Tree / 二叉树的最大深度 | Easy | tree | 后序递归：空结点返回 0，否则 max(左深度, 右深度) + 1 | [P0104MaximumDepthOfBinaryTree.java](src/leetcode/tree/P0104MaximumDepthOfBinaryTree.java) |
+| 105 | Construct Binary Tree from Preorder and Inorder Traversal / 从前序与中序遍历序列构造二叉树 | Medium | tree | 分治 + 半开区间 [start,end)：先序首元素是根，在中序里定位根把两组序列切成左右两段；把中序下标预存进哈希表可把 O(n^2) 降到 O(n) | [P0105ConstructBinaryTreeFromPreorderAndInorderTraversal.java](src/leetcode/tree/P0105ConstructBinaryTreeFromPreorderAndInorderTraversal.java) |
 | 108 | Convert Sorted Array to Binary Search Tree / 将有序数组转换为二叉搜索树 | Easy | tree | 取区间中点作根（mid=(left+right)/2 取中间偏左），递归建左右子树 → 天然高度平衡；空区间返回 null | [P0108ConvertSortedArrayToBinarySearchTree.java](src/leetcode/tree/P0108ConvertSortedArrayToBinarySearchTree.java) |
 | 114 | Flatten Binary Tree to Linked List / 二叉树展开为链表 | Medium | tree | Morris 风格原地展开 O(1) 空间：有左子树时先找左子树最右结点、把原右子树接上去，再把左子树搬到右边并置空 left；展平顺序 = 先序 | [P0114FlattenBinaryTreeToLinkedList.java](src/leetcode/tree/P0114FlattenBinaryTreeToLinkedList.java) |
 | 128 | Longest Consecutive Sequence / 最长连续序列 | Medium | hash | HashSet O(n) 查找，只从序列起点(num-1 不存在)开始扩展 | [P0128LongestConsecutiveSequence.java](src/leetcode/hash/P0128LongestConsecutiveSequence.java) |
