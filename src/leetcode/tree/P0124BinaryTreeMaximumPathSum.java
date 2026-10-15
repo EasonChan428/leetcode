@@ -15,8 +15,9 @@
  */
 class P0124BinaryTreeMaximumPathSum {
     // maxSum全局变量：记录当前子树内部的分叉路径最大值（可以同时取左 + 当前 + 右，这个路径不能向上传给父节点，只用来更新答案）
-    int maxSum = Integer.MIN_VALUE;
+    private int maxSum = Integer.MIN_VALUE;
     public int maxPathSum(TreeNode root) {
+        maxSum = Integer.MIN_VALUE; // 进函数先归零（注意是 MIN_VALUE 不是 0，否则全负树会算成 0）：字段值会跨调用保留，不重置的话同一个对象第二次调用会拿到上一次的旧结果
         helper(root);
         return maxSum;
     }
