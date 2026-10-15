@@ -65,6 +65,7 @@ leetcode-java/
             ├── P0199BinaryTreeRightSideView.java
             ├── P0226InvertBinaryTree.java
             ├── P0230KthSmallestElementInABST.java
+            ├── P0236LowestCommonAncestorOfABinaryTree.java
             ├── P0437PathSumIII.java
             └── P0543DiameterOfBinaryTree.java
 ```
@@ -133,6 +134,7 @@ leetcode-java/
 | 226 | Invert Binary Tree / 翻转二叉树 | Easy | tree | 后序递归：先翻好左右子树，再交换 root 的左右孩子；空结点返回 null | [P0226InvertBinaryTree.java](src/leetcode/tree/P0226InvertBinaryTree.java) |
 | 230 | Kth Smallest Element in a BST / 二叉搜索树中第K小的元素 | Medium | tree | 迭代中序（94 的骨架）+ 计数器：每弹出一个结点 k--，减到 0 即答案，找到就 break 不用遍历全树，O(H+k) | [P0230KthSmallestElementInABST.java](src/leetcode/tree/P0230KthSmallestElementInABST.java) |
 | 234 | Palindrome Linked List / 回文链表 | Easy | linked-list | 快慢指针找中点 + 反转后半段比对；比对完再反转回来恢复原链表，O(1) 空间 | [P0234PalindromeLinkedList.java](src/leetcode/linked-list/P0234PalindromeLinkedList.java) |
+| 236 | Lowest Common Ancestor of a Binary Tree / 二叉树的最近公共祖先 | Medium | tree | 后序递归：root 为空或等于 p/q 就直接返回 root；左右结果只有一个非空就返回那个，两个都非空说明 p、q 分居两侧，root 即 LCA | [P0236LowestCommonAncestorOfABinaryTree.java](src/leetcode/tree/P0236LowestCommonAncestorOfABinaryTree.java) |
 | 238 | Product of Array Except Self | Medium | array | 前后缀积（left/right 两个数组） | [P0238ProductOfArrayExceptSelf.java](src/leetcode/array/P0238ProductOfArrayExceptSelf.java) |
 | 239 | Sliding Window Maximum / 滑动窗口最大值 | Hard | sliding-window | 优先队列存 [数值,下标]，堆顶最大；取堆顶时弹出已滑出窗口的过期元素，O(n log n) | [P0239SlidingWindowMaximum.java](src/leetcode/sliding-window/P0239SlidingWindowMaximum.java) |
 | 240 | Search a 2D Matrix II / 搜索二维矩阵 II | Medium | matrix | 左下角标志数：> target 消一行，< target 消一列 | [P0240SearchA2DMatrixII.java](src/leetcode/matrix/P0240SearchA2DMatrixII.java) |
