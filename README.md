@@ -6,7 +6,7 @@ LeetCode 题解（Java）。
 
 - **一题一文件**，类名唯一：`P` + 四位题号 + 驼峰题名，例如 `P0001TwoSum`。
 - **不写 `package` 声明**，文件按主题放在 `src/leetcode/<主题>/` 下。
-  现有主题：`array`、`matrix`、`linked-list`、`tree`、`two-pointers`、`sliding-window`、`hash`、`dp`、`intervals`、`design`。
+  现有主题：`array`、`matrix`、`linked-list`、`tree`、`graph`、`two-pointers`、`sliding-window`、`hash`、`dp`、`intervals`、`design`。
 - 题目之外的**共用定义**放在 `src/leetcode/common/`（目前有 `ListNode`、`Node`、`TreeNode`）。LeetCode 把
   `ListNode` / `Node` / `TreeNode` 的定义写在每道题的注释里，复制出来不含可编译的定义，直接存盘会报
   「找不到符号」；而默认包里不能重复声明同名类，所以这类节点**统一用 `common/` 里的那一份**，各题文件里不要再各写一份。
@@ -34,6 +34,8 @@ leetcode-java/
         │   └── P0001TwoSum.java
         ├── design/
         │   └── P0146LRUCache.java
+        ├── graph/
+        │   └── P0200NumberOfIslands.java
         ├── linked-list/
         │   ├── P0002AddTwoNumbers.java
         │   ├── P0019RemoveNthNodeFromEndOfList.java
@@ -132,6 +134,7 @@ leetcode-java/
 | 160 | Intersection of Two Linked Lists / 相交链表 | Easy | linked-list | 双指针互换链表头，各自走 a+b-c 步后相遇；不相交则同时为 null | [P0160IntersectionOfTwoLinkedLists.java](src/leetcode/linked-list/P0160IntersectionOfTwoLinkedLists.java) |
 | 189 | Rotate Array | Medium | array | 三次反转，原地 O(1) 空间 | [P0189RotateArray.java](src/leetcode/array/P0189RotateArray.java) |
 | 199 | Binary Tree Right Side View / 二叉树的右视图 | Medium | tree | DFS 右优先：先递归右子树，depth == ans.size() 表示该深度首次到达，正好是最右可见结点；注释附层序版 | [P0199BinaryTreeRightSideView.java](src/leetcode/tree/P0199BinaryTreeRightSideView.java) |
+| 200 | Number of Islands / 岛屿数量 | Medium | graph | 网格 DFS 淹没法：外层每碰到一块 '1' 就计数 +1，并 dfs 把整座岛标成 '2'；访问过的格子改值即完成去重，整体 O(mn) | [P0200NumberOfIslands.java](src/leetcode/graph/P0200NumberOfIslands.java) |
 | 206 | Reverse Linked List / 反转链表 | Easy | linked-list | 迭代：pre/cur 双指针，逐个把 next 指向前驱，O(n) 时间 O(1) 空间 | [P0206ReverseLinkedList.java](src/leetcode/linked-list/P0206ReverseLinkedList.java) |
 | 226 | Invert Binary Tree / 翻转二叉树 | Easy | tree | 后序递归：先翻好左右子树，再交换 root 的左右孩子；空结点返回 null | [P0226InvertBinaryTree.java](src/leetcode/tree/P0226InvertBinaryTree.java) |
 | 230 | Kth Smallest Element in a BST / 二叉搜索树中第K小的元素 | Medium | tree | 迭代中序（94 的骨架）+ 计数器：每弹出一个结点 k--，减到 0 即答案，找到就 break 不用遍历全树，O(H+k) | [P0230KthSmallestElementInABST.java](src/leetcode/tree/P0230KthSmallestElementInABST.java) |
