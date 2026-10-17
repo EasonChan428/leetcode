@@ -33,7 +33,8 @@ leetcode-java/
         ├── array/
         │   └── P0001TwoSum.java
         ├── design/
-        │   └── P0146LRUCache.java
+        │   ├── P0146LRUCache.java
+        │   └── P0208ImplementTriePrefixTree.java
         ├── graph/
         │   ├── P0200NumberOfIslands.java
         │   ├── P0207CourseSchedule.java
@@ -139,6 +140,7 @@ leetcode-java/
 | 200 | Number of Islands / 岛屿数量 | Medium | graph | 网格 DFS 淹没法：外层每碰到一块 '1' 就计数 +1，并 dfs 把整座岛标成 '2'；访问过的格子改值即完成去重，整体 O(mn) | [P0200NumberOfIslands.java](src/leetcode/graph/P0200NumberOfIslands.java) |
 | 206 | Reverse Linked List / 反转链表 | Easy | linked-list | 迭代：pre/cur 双指针，逐个把 next 指向前驱，O(n) 时间 O(1) 空间 | [P0206ReverseLinkedList.java](src/leetcode/linked-list/P0206ReverseLinkedList.java) |
 | 207 | Course Schedule / 课程表 | Medium | graph | Kahn 拓扑排序（BFS）：入度数组 + 邻接表，每次取入度为 0 的课入队，出队时把后继入度减 1；最后看完成的课程数是否等于总数（不等即有环） | [P0207CourseSchedule.java](src/leetcode/graph/P0207CourseSchedule.java) |
+| 208 | Implement Trie (Prefix Tree) / 实现 Trie (前缀树) | Medium | design | 26 叉树：children[26] 存子节点、isEnd 标记单词结尾；search = 走到底且 isEnd，startsWith = 只要走得到；insert/search/startsWith 都是 O(L) | [P0208ImplementTriePrefixTree.java](src/leetcode/design/P0208ImplementTriePrefixTree.java) |
 | 226 | Invert Binary Tree / 翻转二叉树 | Easy | tree | 后序递归：先翻好左右子树，再交换 root 的左右孩子；空结点返回 null | [P0226InvertBinaryTree.java](src/leetcode/tree/P0226InvertBinaryTree.java) |
 | 230 | Kth Smallest Element in a BST / 二叉搜索树中第K小的元素 | Medium | tree | 迭代中序（94 的骨架）+ 计数器：每弹出一个结点 k--，减到 0 即答案，找到就 break 不用遍历全树，O(H+k) | [P0230KthSmallestElementInABST.java](src/leetcode/tree/P0230KthSmallestElementInABST.java) |
 | 234 | Palindrome Linked List / 回文链表 | Easy | linked-list | 快慢指针找中点 + 反转后半段比对；比对完再反转回来恢复原链表，O(1) 空间 | [P0234PalindromeLinkedList.java](src/leetcode/linked-list/P0234PalindromeLinkedList.java) |
