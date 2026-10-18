@@ -33,6 +33,7 @@ leetcode-java/
         ├── array/
         │   └── P0001TwoSum.java
         ├── backtracking/
+        │   ├── P0017LetterCombinationsOfAPhoneNumber.java
         │   ├── P0046Permutations.java
         │   └── P0078Subsets.java
         ├── design/
@@ -108,6 +109,7 @@ leetcode-java/
 | 3 | Longest Substring Without Repeating Characters / 无重复字符的最长子串 | Medium | sliding-window | 滑动窗口 + HashMap 记录字符上次出现位置，left 不回退 | [P0003LongestSubstringWithoutRepeatingCharacters.java](src/leetcode/sliding-window/P0003LongestSubstringWithoutRepeatingCharacters.java) |
 | 11 | Container With Most Water / 盛最多水的容器 | Medium | two-pointers | 左右双指针，每次移动较矮的一侧，面积 O(n) 求最大 | [P0011ContainerWithMostWater.java](src/leetcode/two-pointers/P0011ContainerWithMostWater.java) |
 | 15 | 3Sum / 三数之和 | Medium | two-pointers | 排序 + 双指针夹逼，三层去重 | [P0015ThreeSum.java](src/leetcode/two-pointers/P0015ThreeSum.java) |
+| 17 | Letter Combinations of a Phone Number / 电话号码的字母组合 | Medium | backtracking | 回溯：每位数字遍历它的字母，append 后递归、回来后 deleteCharAt；index == digits.length() 说明拼满一个结果（空输入要单独返回 []） | [P0017LetterCombinationsOfAPhoneNumber.java](src/leetcode/backtracking/P0017LetterCombinationsOfAPhoneNumber.java) |
 | 19 | Remove Nth Node From End of List / 删除链表的倒数第 N 个结点 | Medium | linked-list | 两次遍历：先数长度 sz 再走到 sz-n 处跳过；注释附一次遍历的 dummy + 快慢指针最优解 | [P0019RemoveNthNodeFromEndOfList.java](src/leetcode/linked-list/P0019RemoveNthNodeFromEndOfList.java) |
 | 21 | Merge Two Sorted Lists / 合并两个有序链表 | Easy | linked-list | 哑结点 + 双指针逐个接较小者；收尾接上未空的那条，返回 dummy.next | [P0021MergeTwoSortedLists.java](src/leetcode/linked-list/P0021MergeTwoSortedLists.java) |
 | 23 | Merge k Sorted Lists / 合并K个升序链表 | Hard | linked-list | 分治合并（两两配对归并）：O(N log k) 时间，O(log k) 递归栈；注释附顺序归并 O(k^2 n) 对照版 | [P0023MergeKSortedLists.java](src/leetcode/linked-list/P0023MergeKSortedLists.java) |
