@@ -34,6 +34,7 @@ leetcode-java/
         │   └── P0001TwoSum.java
         ├── backtracking/
         │   ├── P0017LetterCombinationsOfAPhoneNumber.java
+        │   ├── P0039CombinationSum.java
         │   ├── P0046Permutations.java
         │   └── P0078Subsets.java
         ├── design/
@@ -115,6 +116,7 @@ leetcode-java/
 | 23 | Merge k Sorted Lists / 合并K个升序链表 | Hard | linked-list | 分治合并（两两配对归并）：O(N log k) 时间，O(log k) 递归栈；注释附顺序归并 O(k^2 n) 对照版 | [P0023MergeKSortedLists.java](src/leetcode/linked-list/P0023MergeKSortedLists.java) |
 | 24 | Swap Nodes in Pairs / 两两交换链表中的节点 | Medium | linked-list | 哑结点 + 三指针换序：先存下一组起点 nextPair 再改指针，避免丢失后续链 | [P0024SwapNodesInPairs.java](src/leetcode/linked-list/P0024SwapNodesInPairs.java) |
 | 25 | Reverse Nodes in k-Group / K 个一组翻转链表 | Hard | linked-list | 哑结点 + 先数 k 个定位 end；断开本组整体反转后接回，不足 k 个保持原样 | [P0025ReverseNodesInKGroup.java](src/leetcode/linked-list/P0025ReverseNodesInKGroup.java) |
+| 39 | Combination Sum / 组合总和 | Medium | backtracking | 组合式回溯 + 元素可重复：递归传 i（不是 i+1）就能重复选；sum 作为参数往下传（写在调用里），避开手动加减；sum==target 收结果、sum>target 剪枝返回 | [P0039CombinationSum.java](src/leetcode/backtracking/P0039CombinationSum.java) |
 | 41 | First Missing Positive | Hard | array | 原地哈希：数字 x 放到下标 x-1，环形交换 | [P0041FirstMissingPositive.java](src/leetcode/array/P0041FirstMissingPositive.java) |
 | 42 | Trapping Rain Water / 接雨水 | Hard | two-pointers | 双指针 + 左右最大高度，每次处理较矮的一侧 | [P0042TrappingRainWater.java](src/leetcode/two-pointers/P0042TrappingRainWater.java) |
 | 46 | Permutations / 全排列 | Medium | backtracking | 回溯模板：used[] 标记已选 + path 记录当前排列；到头就【深拷贝】path 存进结果，然后撤销选择回退（一定要 new ArrayList<>(path) 复制） | [P0046Permutations.java](src/leetcode/backtracking/P0046Permutations.java) |
