@@ -6,7 +6,7 @@ LeetCode 题解（Java）。
 
 - **一题一文件**，类名唯一：`P` + 四位题号 + 驼峰题名，例如 `P0001TwoSum`。
 - **不写 `package` 声明**，文件按主题放在 `src/leetcode/<主题>/` 下。
-  现有主题：`array`、`matrix`、`linked-list`、`tree`、`graph`、`two-pointers`、`sliding-window`、`hash`、`dp`、`intervals`、`design`。
+  现有主题：`array`、`matrix`、`linked-list`、`tree`、`graph`、`backtracking`、`two-pointers`、`sliding-window`、`hash`、`dp`、`intervals`、`design`。
 - 题目之外的**共用定义**放在 `src/leetcode/common/`（目前有 `ListNode`、`Node`、`TreeNode`）。LeetCode 把
   `ListNode` / `Node` / `TreeNode` 的定义写在每道题的注释里，复制出来不含可编译的定义，直接存盘会报
   「找不到符号」；而默认包里不能重复声明同名类，所以这类节点**统一用 `common/` 里的那一份**，各题文件里不要再各写一份。
@@ -32,6 +32,8 @@ leetcode-java/
         │   └── TreeNode.java     # 二叉树题共用节点定义
         ├── array/
         │   └── P0001TwoSum.java
+        ├── backtracking/
+        │   └── P0046Permutations.java
         ├── design/
         │   ├── P0146LRUCache.java
         │   └── P0208ImplementTriePrefixTree.java
@@ -112,6 +114,7 @@ leetcode-java/
 | 25 | Reverse Nodes in k-Group / K 个一组翻转链表 | Hard | linked-list | 哑结点 + 先数 k 个定位 end；断开本组整体反转后接回，不足 k 个保持原样 | [P0025ReverseNodesInKGroup.java](src/leetcode/linked-list/P0025ReverseNodesInKGroup.java) |
 | 41 | First Missing Positive | Hard | array | 原地哈希：数字 x 放到下标 x-1，环形交换 | [P0041FirstMissingPositive.java](src/leetcode/array/P0041FirstMissingPositive.java) |
 | 42 | Trapping Rain Water / 接雨水 | Hard | two-pointers | 双指针 + 左右最大高度，每次处理较矮的一侧 | [P0042TrappingRainWater.java](src/leetcode/two-pointers/P0042TrappingRainWater.java) |
+| 46 | Permutations / 全排列 | Medium | backtracking | 回溯模板：used[] 标记已选 + path 记录当前排列；到头就【深拷贝】path 存进结果，然后撤销选择回退（一定要 new ArrayList<>(path) 复制） | [P0046Permutations.java](src/leetcode/backtracking/P0046Permutations.java) |
 | 48 | Rotate Image / 旋转图像 | Medium | matrix | 上下翻转 + 主对角线翻转 = 顺时针 90 度 | [P0048RotateImage.java](src/leetcode/matrix/P0048RotateImage.java) |
 | 49 | Group Anagrams / 字母异位词分组 | Medium | hash | 排序后的字符串作哈希键，O(n·k log k) | [P0049GroupAnagrams.java](src/leetcode/hash/P0049GroupAnagrams.java) |
 | 53 | Maximum Subarray / 最大子数组和 | Medium | dp | Kadane 动态规划：f(i)=max(f(i-1)+nums[i], nums[i])，滚动变量 O(1) 空间 | [P0053MaximumSubarray.java](src/leetcode/dp/P0053MaximumSubarray.java) |
