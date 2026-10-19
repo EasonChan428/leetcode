@@ -34,6 +34,7 @@ leetcode-java/
         │   └── P0001TwoSum.java
         ├── backtracking/
         │   ├── P0017LetterCombinationsOfAPhoneNumber.java
+        │   ├── P0022GenerateParentheses.java
         │   ├── P0039CombinationSum.java
         │   ├── P0046Permutations.java
         │   └── P0078Subsets.java
@@ -113,6 +114,7 @@ leetcode-java/
 | 17 | Letter Combinations of a Phone Number / 电话号码的字母组合 | Medium | backtracking | 回溯：每位数字遍历它的字母，append 后递归、回来后 deleteCharAt；index == digits.length() 说明拼满一个结果（空输入要单独返回 []） | [P0017LetterCombinationsOfAPhoneNumber.java](src/leetcode/backtracking/P0017LetterCombinationsOfAPhoneNumber.java) |
 | 19 | Remove Nth Node From End of List / 删除链表的倒数第 N 个结点 | Medium | linked-list | 两次遍历：先数长度 sz 再走到 sz-n 处跳过；注释附一次遍历的 dummy + 快慢指针最优解 | [P0019RemoveNthNodeFromEndOfList.java](src/leetcode/linked-list/P0019RemoveNthNodeFromEndOfList.java) |
 | 21 | Merge Two Sorted Lists / 合并两个有序链表 | Easy | linked-list | 哑结点 + 双指针逐个接较小者；收尾接上未空的那条，返回 dummy.next | [P0021MergeTwoSortedLists.java](src/leetcode/linked-list/P0021MergeTwoSortedLists.java) |
+| 22 | Generate Parentheses / 括号生成 | Medium | backtracking | 回溯 + 两个剪枝条件：open<n 才能加左括号，close<open 才能加右括号（保证任意前缀合法）；len==2n 收结果，结果总数是第 n 个 Catalan 数 | [P0022GenerateParentheses.java](src/leetcode/backtracking/P0022GenerateParentheses.java) |
 | 23 | Merge k Sorted Lists / 合并K个升序链表 | Hard | linked-list | 分治合并（两两配对归并）：O(N log k) 时间，O(log k) 递归栈；注释附顺序归并 O(k^2 n) 对照版 | [P0023MergeKSortedLists.java](src/leetcode/linked-list/P0023MergeKSortedLists.java) |
 | 24 | Swap Nodes in Pairs / 两两交换链表中的节点 | Medium | linked-list | 哑结点 + 三指针换序：先存下一组起点 nextPair 再改指针，避免丢失后续链 | [P0024SwapNodesInPairs.java](src/leetcode/linked-list/P0024SwapNodesInPairs.java) |
 | 25 | Reverse Nodes in k-Group / K 个一组翻转链表 | Hard | linked-list | 哑结点 + 先数 k 个定位 end；断开本组整体反转后接回，不足 k 个保持原样 | [P0025ReverseNodesInKGroup.java](src/leetcode/linked-list/P0025ReverseNodesInKGroup.java) |
