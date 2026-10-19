@@ -37,7 +37,8 @@ leetcode-java/
         │   ├── P0022GenerateParentheses.java
         │   ├── P0039CombinationSum.java
         │   ├── P0046Permutations.java
-        │   └── P0078Subsets.java
+        │   ├── P0078Subsets.java
+        │   └── P0079WordSearch.java
         ├── design/
         │   ├── P0146LRUCache.java
         │   └── P0208ImplementTriePrefixTree.java
@@ -130,6 +131,7 @@ leetcode-java/
 | 73 | Set Matrix Zeroes / 矩阵置零 | Medium | matrix | 首行首列当标记位，O(1) 额外空间 | [P0073SetMatrixZeroes.java](src/leetcode/matrix/P0073SetMatrixZeroes.java) |
 | 76 | Minimum Window Substring / 最小覆盖子串 | Hard | sliding-window | 滑动窗口：r 扩张到覆盖 t，再收缩 l 取最小；need 计数判断是否覆盖，O(n) | [P0076MinimumWindowSubstring.java](src/leetcode/sliding-window/P0076MinimumWindowSubstring.java) |
 | 78 | Subsets / 子集 | Medium | backtracking | 组合式回溯：每进一层就先把当前前缀收进结果，再从 cur 往后挑元素、递归 i+1；靠起点 cur 去重所以不需要 used 数组 | [P0078Subsets.java](src/leetcode/backtracking/P0078Subsets.java) |
+| 79 | Word Search / 单词搜索 | Medium | backtracking | 网格 DFS 回溯：字符不匹配/到头分别返回 false/true；进递归前标记 isVisited、出来必须撤销；外层对每个起点试一次 | [P0079WordSearch.java](src/leetcode/backtracking/P0079WordSearch.java) |
 | 94 | Binary Tree Inorder Traversal / 二叉树的中序遍历 | Easy | tree | 迭代法用显式栈模拟递归：一路压左孩子，弹出即访问，再转向右孩子；注释附递归版 | [P0094BinaryTreeInorderTraversal.java](src/leetcode/tree/P0094BinaryTreeInorderTraversal.java) |
 | 98 | Validate Binary Search Tree / 验证二叉搜索树 | Medium | tree | 上下界传递：左子树收紧上界、右子树收紧下界，严格比较；上下界必须用 long 装 ±∞ 才能扛住 Integer.MIN/MAX_VALUE | [P0098ValidateBinarySearchTree.java](src/leetcode/tree/P0098ValidateBinarySearchTree.java) |
 | 101 | Symmetric Tree / 对称二叉树 | Easy | tree | 递归比较镜像对：左的左 vs 右的右、左的右 vs 右的左（交叉比较才是镜像） | [P0101SymmetricTree.java](src/leetcode/tree/P0101SymmetricTree.java) |
