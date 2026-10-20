@@ -62,3 +62,61 @@ class P0051NQueens {
         return board;
     }
 }
+
+//进阶写法：用三个 int 位掩码代替三个 HashSet（更快、常量更小）—— 面试加分
+/*
+class Solution {
+    // 思路与主解完全一样，只是把「哪些列 / 对角线被占用」从 HashSet 换成了 int 的二进制位：
+    //      int 的第 i 位 = 1，表示第 i 列（或第 i 条对角线）已被占用。
+    //      判断冲突只要一次位运算，没有哈希开销。
+    //
+    // 三个掩码的含义与「每层怎么移位」：
+    //   col  第 i 位 = 第 i 列被占
+    //   d1   "\" 方向（左上→右下）：本行占第 c 列，下一行同一斜线落在第 c+1 列 → 每层左移 1 位
+    //   d2   "/" 方向（右上→左下）：本行占第 c 列，下一行同一斜线落在第 c-1 列 → 每层右移 1 位
+    //
+    // 为什么不需要撤销：三个掩码是「算出一个新值往下传」的（位运算生成新 int），
+    //     而不是共享的集合，所以天然不存在「回溯后忘了 remove」的问题 —— 这也是它比 Set 版简洁的地方。
+    private int n;
+    private int[] queens;
+    private List<List<String>> res;
+
+    public List<List<String>> solveNQueens(int n) {
+        this.n = n;
+        this.queens = new int[n];
+        Arrays.fill(this.queens, -1);
+        this.res = new ArrayList<>();          // 每次调用都新建，避免上一个用例的结果残留
+        dfs(0, 0, 0, 0);
+        return res;
+    }
+
+    // row：当前行；col / d1 / d2：本行被占用的列与两条对角线（都已对齐到本行的列号）
+    private void dfs(int row, int col, int d1, int d2) {
+        if (row == n) {
+            res.add(buildBoard());
+            return;
+        }
+        // 本行可选的列：n 位全 1 的掩码，去掉已被「列 / 两条对角线」占用的位
+        int available = ((1 << n) - 1) & ~(col | d1 | d2);
+        while (available != 0) {
+            int bit = available & (-available);           // 取出最低位的 1 —— 一个候选列
+            available ^= bit;                             // 用掉这个候选，下一轮试下一个
+            int c = Integer.numberOfTrailingZeros(bit);    // 该位对应第几列
+            queens[row] = c;
+            dfs(row + 1, col | bit, (d1 | bit) << 1, (d2 | bit) >> 1);
+            queens[row] = -1;                             // 回溯：列/对角线不用撤销，因为是传值下去的
+        }
+    }
+
+    private List<String> buildBoard() {
+        List<String> board = new ArrayList<>();
+        for (int r = 0; r < n; r++) {
+            char[] line = new char[n];
+            Arrays.fill(line, '.');
+            line[queens[r]] = 'Q';
+            board.add(new String(line));
+        }
+        return board;
+    }
+}
+*/
