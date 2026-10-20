@@ -42,7 +42,8 @@ leetcode-java/
         │   ├── P0079WordSearch.java
         │   └── P0131PalindromePartitioning.java
         ├── binary-search/
-        │   └── P0035SearchInsertPosition.java
+        │   ├── P0035SearchInsertPosition.java
+        │   └── P0074SearchA2DMatrix.java
         ├── design/
         │   ├── P0146LRUCache.java
         │   └── P0208ImplementTriePrefixTree.java
@@ -135,6 +136,7 @@ leetcode-java/
 | 54 | Spiral Matrix / 螺旋矩阵 | Medium | matrix | 四条边界收缩，逐圈取数 | [P0054SpiralMatrix.java](src/leetcode/matrix/P0054SpiralMatrix.java) |
 | 56 | Merge Intervals / 合并区间 | Medium | intervals | 按左端点排序 + 一次遍历合并；返回前用 Arrays.copyOf 截取 size+1 个有效区间 | [P0056MergeIntervals.java](src/leetcode/intervals/P0056MergeIntervals.java) |
 | 73 | Set Matrix Zeroes / 矩阵置零 | Medium | matrix | 首行首列当标记位，O(1) 额外空间 | [P0073SetMatrixZeroes.java](src/leetcode/matrix/P0073SetMatrixZeroes.java) |
+| 74 | Search a 2D Matrix / 搜索二维矩阵 | Medium | binary-search | 两次二分：先在第一列上二分定位「第一个 matrix[u][0] >= target」的行 u，命中行首直接 true；否则在 u-1 行内再二分。注意 u==0（比所有都小）和 u==m（比所有都大）两个边界 | [P0074SearchA2DMatrix.java](src/leetcode/binary-search/P0074SearchA2DMatrix.java) |
 | 76 | Minimum Window Substring / 最小覆盖子串 | Hard | sliding-window | 滑动窗口：r 扩张到覆盖 t，再收缩 l 取最小；need 计数判断是否覆盖，O(n) | [P0076MinimumWindowSubstring.java](src/leetcode/sliding-window/P0076MinimumWindowSubstring.java) |
 | 78 | Subsets / 子集 | Medium | backtracking | 组合式回溯：每进一层就先把当前前缀收进结果，再从 cur 往后挑元素、递归 i+1；靠起点 cur 去重所以不需要 used 数组 | [P0078Subsets.java](src/leetcode/backtracking/P0078Subsets.java) |
 | 79 | Word Search / 单词搜索 | Medium | backtracking | 网格 DFS 回溯：字符不匹配/到头分别返回 false/true；进递归前标记 isVisited、出来必须撤销；外层对每个起点试一次 | [P0079WordSearch.java](src/leetcode/backtracking/P0079WordSearch.java) |
