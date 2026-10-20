@@ -37,6 +37,7 @@ leetcode-java/
         │   ├── P0022GenerateParentheses.java
         │   ├── P0039CombinationSum.java
         │   ├── P0046Permutations.java
+        │   ├── P0051NQueens.java
         │   ├── P0078Subsets.java
         │   ├── P0079WordSearch.java
         │   └── P0131PalindromePartitioning.java
@@ -126,6 +127,7 @@ leetcode-java/
 | 46 | Permutations / 全排列 | Medium | backtracking | 回溯模板：used[] 标记已选 + path 记录当前排列；到头就【深拷贝】path 存进结果，然后撤销选择回退（一定要 new ArrayList<>(path) 复制） | [P0046Permutations.java](src/leetcode/backtracking/P0046Permutations.java) |
 | 48 | Rotate Image / 旋转图像 | Medium | matrix | 上下翻转 + 主对角线翻转 = 顺时针 90 度 | [P0048RotateImage.java](src/leetcode/matrix/P0048RotateImage.java) |
 | 49 | Group Anagrams / 字母异位词分组 | Medium | hash | 排序后的字符串作哈希键，O(n·k log k) | [P0049GroupAnagrams.java](src/leetcode/hash/P0049GroupAnagrams.java) |
+| 51 | N-Queens / N 皇后 | Hard | backtracking | 回溯 + 三个冲突集合：columns 记列、row-col 记「左上→右下」对角线、row+col 记「右上→左下」对角线；每行放一个皇后，放满 n 行就输出棋盘 | [P0051NQueens.java](src/leetcode/backtracking/P0051NQueens.java) |
 | 53 | Maximum Subarray / 最大子数组和 | Medium | dp | Kadane 动态规划：f(i)=max(f(i-1)+nums[i], nums[i])，滚动变量 O(1) 空间 | [P0053MaximumSubarray.java](src/leetcode/dp/P0053MaximumSubarray.java) |
 | 54 | Spiral Matrix / 螺旋矩阵 | Medium | matrix | 四条边界收缩，逐圈取数 | [P0054SpiralMatrix.java](src/leetcode/matrix/P0054SpiralMatrix.java) |
 | 56 | Merge Intervals / 合并区间 | Medium | intervals | 按左端点排序 + 一次遍历合并；返回前用 Arrays.copyOf 截取 size+1 个有效区间 | [P0056MergeIntervals.java](src/leetcode/intervals/P0056MergeIntervals.java) |
