@@ -42,6 +42,7 @@ leetcode-java/
         │   ├── P0079WordSearch.java
         │   └── P0131PalindromePartitioning.java
         ├── binary-search/
+        │   ├── P0034FindFirstAndLastPositionOfElementInSortedArray.java
         │   ├── P0035SearchInsertPosition.java
         │   └── P0074SearchA2DMatrix.java
         ├── design/
@@ -124,6 +125,7 @@ leetcode-java/
 | 23 | Merge k Sorted Lists / 合并K个升序链表 | Hard | linked-list | 分治合并（两两配对归并）：O(N log k) 时间，O(log k) 递归栈；注释附顺序归并 O(k^2 n) 对照版 | [P0023MergeKSortedLists.java](src/leetcode/linked-list/P0023MergeKSortedLists.java) |
 | 24 | Swap Nodes in Pairs / 两两交换链表中的节点 | Medium | linked-list | 哑结点 + 三指针换序：先存下一组起点 nextPair 再改指针，避免丢失后续链 | [P0024SwapNodesInPairs.java](src/leetcode/linked-list/P0024SwapNodesInPairs.java) |
 | 25 | Reverse Nodes in k-Group / K 个一组翻转链表 | Hard | linked-list | 哑结点 + 先数 k 个定位 end；断开本组整体反转后接回，不足 k 个保持原样 | [P0025ReverseNodesInKGroup.java](src/leetcode/linked-list/P0025ReverseNodesInKGroup.java) |
+| 34 | Find First and Last Position of Element in Sorted Array / 在排序数组中查找元素的第一个和最后一个位置 | Medium | binary-search | 两次二分：命中 target 时先记录 mid，再往左继续搜 first、往右继续搜 last；没命中过就保持 -1 | [P0034FindFirstAndLastPositionOfElementInSortedArray.java](src/leetcode/binary-search/P0034FindFirstAndLastPositionOfElementInSortedArray.java) |
 | 35 | Search Insert Position / 搜索插入位置 | Easy | binary-search | 二分找「第一个 >= target 的位置」：nums[mid] < target 就 l=mid+1，否则 r=mid-1，循环结束时 l 就是插入位置；mid 用 l+(r-l)/2 防溢出 | [P0035SearchInsertPosition.java](src/leetcode/binary-search/P0035SearchInsertPosition.java) |
 | 39 | Combination Sum / 组合总和 | Medium | backtracking | 组合式回溯 + 元素可重复：递归传 i（不是 i+1）就能重复选；sum 作为参数往下传（写在调用里），避开手动加减；sum==target 收结果、sum>target 剪枝返回 | [P0039CombinationSum.java](src/leetcode/backtracking/P0039CombinationSum.java) |
 | 41 | First Missing Positive | Hard | array | 原地哈希：数字 x 放到下标 x-1，环形交换 | [P0041FirstMissingPositive.java](src/leetcode/array/P0041FirstMissingPositive.java) |
