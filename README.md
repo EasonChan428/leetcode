@@ -75,7 +75,8 @@ leetcode-java/
         │   ├── P0073SetMatrixZeroes.java
         │   └── P0240SearchA2DMatrixII.java
         ├── stack/
-        │   └── P0020ValidParentheses.java
+        │   ├── P0020ValidParentheses.java
+        │   └── P0155MinStack.java
         └── tree/
             ├── P0094BinaryTreeInorderTraversal.java
             ├── P0098ValidateBinarySearchTree.java
@@ -167,6 +168,7 @@ leetcode-java/
 | 146 | LRU Cache / LRU 缓存 | Medium | design | 哈希表 + 双向链表（伪头/伪尾哨兵）：get/put 均 O(1)；put 超容量时摘掉尾结点并从表中删掉它的 key | [P0146LRUCache.java](src/leetcode/design/P0146LRUCache.java) |
 | 148 | Sort List / 排序链表 | Medium | linked-list | 自底向上归并排序（迭代）：每轮按 subLength 切段两两合并，O(n log n) 时间 O(1) 空间 | [P0148SortList.java](src/leetcode/linked-list/P0148SortList.java) |
 | 153 | Find Minimum in Rotated Sorted Array / 寻找旋转排序数组中的最小值 | Medium | binary-search | 二分：只比较 nums[mid] 和 nums[r] —— 比 r 小说明最小值在 [l,mid]（mid 本身也可能是答案，所以 r=mid 而不是 mid-1）；比 r 大说明在 (mid,r] 取 l=mid+1；l==r 时就是最小值 | [P0153FindMinimumInRotatedSortedArray.java](src/leetcode/binary-search/P0153FindMinimumInRotatedSortedArray.java) |
+| 155 | Min Stack / 最小栈 | Medium | stack | 差值法：栈里只存「val - 当前min」的差值（long 防溢出），并维护一个 min 变量；diff<0 说明新值是新的最小值，pop 时若 diff<0 就用 min-diff 回滚；O(1) 额外空间 | [P0155MinStack.java](src/leetcode/stack/P0155MinStack.java) |
 | 160 | Intersection of Two Linked Lists / 相交链表 | Easy | linked-list | 双指针互换链表头，各自走 a+b-c 步后相遇；不相交则同时为 null | [P0160IntersectionOfTwoLinkedLists.java](src/leetcode/linked-list/P0160IntersectionOfTwoLinkedLists.java) |
 | 189 | Rotate Array | Medium | array | 三次反转，原地 O(1) 空间 | [P0189RotateArray.java](src/leetcode/array/P0189RotateArray.java) |
 | 199 | Binary Tree Right Side View / 二叉树的右视图 | Medium | tree | DFS 右优先：先递归右子树，depth == ans.size() 表示该深度首次到达，正好是最右可见结点；注释附层序版 | [P0199BinaryTreeRightSideView.java](src/leetcode/tree/P0199BinaryTreeRightSideView.java) |
