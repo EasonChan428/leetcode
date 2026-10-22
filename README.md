@@ -6,7 +6,7 @@ LeetCode 题解（Java）。
 
 - **一题一文件**，类名唯一：`P` + 四位题号 + 驼峰题名，例如 `P0001TwoSum`。
 - **不写 `package` 声明**，文件按主题放在 `src/leetcode/<主题>/` 下。
-  现有主题：`array`、`matrix`、`linked-list`、`tree`、`graph`、`backtracking`、`binary-search`、`two-pointers`、`sliding-window`、`hash`、`dp`、`intervals`、`design`。
+  现有主题：`array`、`matrix`、`linked-list`、`tree`、`graph`、`backtracking`、`binary-search`、`stack`、`two-pointers`、`sliding-window`、`hash`、`dp`、`intervals`、`design`。
 - 题目之外的**共用定义**放在 `src/leetcode/common/`（目前有 `ListNode`、`Node`、`TreeNode`）。LeetCode 把
   `ListNode` / `Node` / `TreeNode` 的定义写在每道题的注释里，复制出来不含可编译的定义，直接存盘会报
   「找不到符号」；而默认包里不能重复声明同名类，所以这类节点**统一用 `common/` 里的那一份**，各题文件里不要再各写一份。
@@ -74,6 +74,8 @@ leetcode-java/
         │   ├── P0054SpiralMatrix.java
         │   ├── P0073SetMatrixZeroes.java
         │   └── P0240SearchA2DMatrixII.java
+        ├── stack/
+        │   └── P0020ValidParentheses.java
         └── tree/
             ├── P0094BinaryTreeInorderTraversal.java
             ├── P0098ValidateBinarySearchTree.java
@@ -124,6 +126,7 @@ leetcode-java/
 | 15 | 3Sum / 三数之和 | Medium | two-pointers | 排序 + 双指针夹逼，三层去重 | [P0015ThreeSum.java](src/leetcode/two-pointers/P0015ThreeSum.java) |
 | 17 | Letter Combinations of a Phone Number / 电话号码的字母组合 | Medium | backtracking | 回溯：每位数字遍历它的字母，append 后递归、回来后 deleteCharAt；index == digits.length() 说明拼满一个结果（空输入要单独返回 []） | [P0017LetterCombinationsOfAPhoneNumber.java](src/leetcode/backtracking/P0017LetterCombinationsOfAPhoneNumber.java) |
 | 19 | Remove Nth Node From End of List / 删除链表的倒数第 N 个结点 | Medium | linked-list | 两次遍历：先数长度 sz 再走到 sz-n 处跳过；注释附一次遍历的 dummy + 快慢指针最优解 | [P0019RemoveNthNodeFromEndOfList.java](src/leetcode/linked-list/P0019RemoveNthNodeFromEndOfList.java) |
+| 20 | Valid Parentheses / 有效的括号 | Easy | stack | 栈 + 反向压入：遇到左括号就压入「它对应的右括号」，遇到右括号就弹出比较；先判空再 pop（靠 || 短路），最后栈必须为空 | [P0020ValidParentheses.java](src/leetcode/stack/P0020ValidParentheses.java) |
 | 21 | Merge Two Sorted Lists / 合并两个有序链表 | Easy | linked-list | 哑结点 + 双指针逐个接较小者；收尾接上未空的那条，返回 dummy.next | [P0021MergeTwoSortedLists.java](src/leetcode/linked-list/P0021MergeTwoSortedLists.java) |
 | 22 | Generate Parentheses / 括号生成 | Medium | backtracking | 回溯 + 两个剪枝条件：open<n 才能加左括号，close<open 才能加右括号（保证任意前缀合法）；len==2n 收结果，结果总数是第 n 个 Catalan 数 | [P0022GenerateParentheses.java](src/leetcode/backtracking/P0022GenerateParentheses.java) |
 | 23 | Merge k Sorted Lists / 合并K个升序链表 | Hard | linked-list | 分治合并（两两配对归并）：O(N log k) 时间，O(log k) 递归栈；注释附顺序归并 O(k^2 n) 对照版 | [P0023MergeKSortedLists.java](src/leetcode/linked-list/P0023MergeKSortedLists.java) |
