@@ -42,6 +42,7 @@ leetcode-java/
         │   ├── P0079WordSearch.java
         │   └── P0131PalindromePartitioning.java
         ├── binary-search/
+        │   ├── P0004MedianOfTwoSortedArrays.java
         │   ├── P0033SearchInRotatedSortedArray.java
         │   ├── P0034FindFirstAndLastPositionOfElementInSortedArray.java
         │   ├── P0035SearchInsertPosition.java
@@ -118,6 +119,7 @@ leetcode-java/
 | 1 | Two Sum / 两数之和 | Easy | array | 暴力双重循环，O(n²) | [P0001TwoSum.java](src/leetcode/array/P0001TwoSum.java) |
 | 2 | Add Two Numbers / 两数相加 | Medium | linked-list | 逐位相加带 carry；短链补 0，循环结束后 carry>0 再补一个节点 | [P0002AddTwoNumbers.java](src/leetcode/linked-list/P0002AddTwoNumbers.java) |
 | 3 | Longest Substring Without Repeating Characters / 无重复字符的最长子串 | Medium | sliding-window | 滑动窗口 + HashMap 记录字符上次出现位置，left 不回退 | [P0003LongestSubstringWithoutRepeatingCharacters.java](src/leetcode/sliding-window/P0003LongestSubstringWithoutRepeatingCharacters.java) |
+| 4 | Median of Two Sorted Arrays / 寻找两个正序数组的中位数 | Hard | binary-search | 转成「求第 k 小」：中位数 = 第 (m+n+1)/2 小和第 (m+n+2)/2 小的平均（奇偶统一）；findKth 每次比较两个数组各自的第 k/2 个元素，淘汰较小那侧的前 k/2 个、k 减去 k/2，直到 k==1 或某个数组耗尽 | [P0004MedianOfTwoSortedArrays.java](src/leetcode/binary-search/P0004MedianOfTwoSortedArrays.java) |
 | 11 | Container With Most Water / 盛最多水的容器 | Medium | two-pointers | 左右双指针，每次移动较矮的一侧，面积 O(n) 求最大 | [P0011ContainerWithMostWater.java](src/leetcode/two-pointers/P0011ContainerWithMostWater.java) |
 | 15 | 3Sum / 三数之和 | Medium | two-pointers | 排序 + 双指针夹逼，三层去重 | [P0015ThreeSum.java](src/leetcode/two-pointers/P0015ThreeSum.java) |
 | 17 | Letter Combinations of a Phone Number / 电话号码的字母组合 | Medium | backtracking | 回溯：每位数字遍历它的字母，append 后递归、回来后 deleteCharAt；index == digits.length() 说明拼满一个结果（空输入要单独返回 []） | [P0017LetterCombinationsOfAPhoneNumber.java](src/leetcode/backtracking/P0017LetterCombinationsOfAPhoneNumber.java) |
