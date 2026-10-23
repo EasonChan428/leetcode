@@ -77,7 +77,8 @@ leetcode-java/
         ├── stack/
         │   ├── P0020ValidParentheses.java
         │   ├── P0155MinStack.java
-        │   └── P0394DecodeString.java
+        │   ├── P0394DecodeString.java
+        │   └── P0739DailyTemperatures.java
         └── tree/
             ├── P0094BinaryTreeInorderTraversal.java
             ├── P0098ValidateBinarySearchTree.java
@@ -190,6 +191,7 @@ leetcode-java/
 | 438 | Find All Anagrams in a String / 找到字符串中所有字母异位词 | Medium | sliding-window | 固定长度滑动窗口 + 26 位计数数组，Arrays.equals 比较 | [P0438FindAllAnagramsInAString.java](src/leetcode/sliding-window/P0438FindAllAnagramsInAString.java) |
 | 543 | Diameter of Binary Tree / 二叉树的直径 | Easy | tree | 在 104 的骨架上加一句：每到一个结点就用「左深+右深」更新全局最大直径；空返回 0，叶子返回 1 | [P0543DiameterOfBinaryTree.java](src/leetcode/tree/P0543DiameterOfBinaryTree.java) |
 | 560 | Subarray Sum Equals K / 和为 K 的子数组 | Medium | array | 暴力枚举所有子数组，O(n²) | [P0560SubarraySumEqualsK.java](src/leetcode/array/P0560SubarraySumEqualsK.java) |
+| 739 | Daily Temperatures / 每日温度 | Medium | stack | 单调栈：栈里存「还没找到更暖一天」的下标，栈底到栈顶温度递减；遇到更暖的温度就 while 弹出并记录 i - prv，没弹出的就留在栈里（答案保持 0） | [P0739DailyTemperatures.java](src/leetcode/stack/P0739DailyTemperatures.java) |
 | 994 | Rotting Oranges / 腐烂的橘子 | Medium | graph | 多源 BFS 分层：先把所有烂橘子入队，每层 = 1 分钟；把「入队时标记为 2」防止重复入队；while 里的 count>0 保证没有新鲜橘子时直接返回 0 | [P0994RottingOranges.java](src/leetcode/graph/P0994RottingOranges.java) |
 <!-- INDEX:END -->
 
