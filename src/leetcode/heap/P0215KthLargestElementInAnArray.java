@@ -42,10 +42,58 @@ class P0215KthLargestElementInAnArray {
         }
     }
 
-    // 交换数组两个下标的元素（原代码片段里没贴这个方法，补上，否则编译不过）
     private void swap(int[] nums, int i, int j) {
         int t = nums[i];
         nums[i] = nums[j];
         nums[j] = t;
     }
 }
+/*
+// 桶排序
+class Solution {
+    public int findKthLargest(int[] nums, int k) {
+        // 数值范围[-10000,10000]，偏移10000后映射到[0,20000]，开20001个桶
+        int[] bucket = new int[20001];
+        final int OFFSET = 10000;
+
+        // 1. 把每个数字放进对应桶，桶下标 = 数字 + 偏移量，桶值 = 出现次数
+        for (int num : nums) {
+            bucket[num + OFFSET]++;
+        }
+
+        // 2. 从最大数值的桶往最小数值遍历，累计次数，数到第K个就是答案
+        for (int i = 20000; i >= 0; i--) {
+            k -= bucket[i]; // 减去当前数值出现次数
+            if (k <= 0) {   // 累计够K次，当前数值就是第K大
+                return i - OFFSET;
+            }
+        }
+        return -1; // 题目保证有解，不会走到这里
+    }
+}
+*/
+
+/*
+// 快速排序
+class Solution {
+    int quickselect(int[] nums, int l, int r, int k) {
+        if (l == r) return nums[k];
+        int x = nums[l], i = l - 1, j = r + 1;
+        while (i < j) {
+            do i++; while (nums[i] < x);
+            do j--; while (nums[j] > x);
+            if (i < j){
+                int tmp = nums[i];
+                nums[i] = nums[j];
+                nums[j] = tmp;
+            }
+        }
+        if (k <= j) return quickselect(nums, l, j, k);
+        else return quickselect(nums, j + 1, r, k);
+    }
+    public int findKthLargest(int[] _nums, int k) {
+        int n = _nums.length;
+        return quickselect(_nums, 0, n - 1, n - k);
+    }
+}
+*/
