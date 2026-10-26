@@ -52,6 +52,7 @@ leetcode-java/
         │   ├── P0146LRUCache.java
         │   └── P0208ImplementTriePrefixTree.java
         ├── dp/
+        │   ├── P0045JumpGameII.java
         │   ├── P0053MaximumSubarray.java
         │   ├── P0055JumpGame.java
         │   └── P0121BestTimeToBuyAndSellStock.java
@@ -150,6 +151,7 @@ leetcode-java/
 | 39 | Combination Sum / 组合总和 | Medium | backtracking | 组合式回溯 + 元素可重复：递归传 i（不是 i+1）就能重复选；sum 作为参数往下传（写在调用里），避开手动加减；sum==target 收结果、sum>target 剪枝返回 | [P0039CombinationSum.java](src/leetcode/backtracking/P0039CombinationSum.java) |
 | 41 | First Missing Positive | Hard | array | 原地哈希：数字 x 放到下标 x-1，环形交换 | [P0041FirstMissingPositive.java](src/leetcode/array/P0041FirstMissingPositive.java) |
 | 42 | Trapping Rain Water / 接雨水 | Hard | two-pointers | 双指针 + 左右最大高度，每次处理较矮的一侧 | [P0042TrappingRainWater.java](src/leetcode/two-pointers/P0042TrappingRainWater.java) |
+| 45 | Jump Game II / 跳跃游戏 II | Medium | dp | BFS 式贪心：border 是当前这一跳能覆盖的最远边界，maxPosition 是「边界内各格再跳一次」能到的最远位置；走到 border 就必须跳一次（step++）并把 border 推到 maxPosition；O(n) 时间 O(1) 空间 | [P0045JumpGameII.java](src/leetcode/dp/P0045JumpGameII.java) |
 | 46 | Permutations / 全排列 | Medium | backtracking | 回溯模板：used[] 标记已选 + path 记录当前排列；到头就【深拷贝】path 存进结果，然后撤销选择回退（一定要 new ArrayList<>(path) 复制） | [P0046Permutations.java](src/leetcode/backtracking/P0046Permutations.java) |
 | 48 | Rotate Image / 旋转图像 | Medium | matrix | 上下翻转 + 主对角线翻转 = 顺时针 90 度 | [P0048RotateImage.java](src/leetcode/matrix/P0048RotateImage.java) |
 | 49 | Group Anagrams / 字母异位词分组 | Medium | hash | 排序后的字符串作哈希键，O(n·k log k) | [P0049GroupAnagrams.java](src/leetcode/hash/P0049GroupAnagrams.java) |
