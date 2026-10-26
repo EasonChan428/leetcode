@@ -53,6 +53,7 @@ leetcode-java/
         │   └── P0208ImplementTriePrefixTree.java
         ├── dp/
         │   ├── P0053MaximumSubarray.java
+        │   ├── P0055JumpGame.java
         │   └── P0121BestTimeToBuyAndSellStock.java
         ├── graph/
         │   ├── P0200NumberOfIslands.java
@@ -155,6 +156,7 @@ leetcode-java/
 | 51 | N-Queens / N 皇后 | Hard | backtracking | 回溯 + 三个冲突集合：columns 记列、row-col 记「左上→右下」对角线、row+col 记「右上→左下」对角线；每行放一个皇后，放满 n 行就输出棋盘 | [P0051NQueens.java](src/leetcode/backtracking/P0051NQueens.java) |
 | 53 | Maximum Subarray / 最大子数组和 | Medium | dp | Kadane 动态规划：f(i)=max(f(i-1)+nums[i], nums[i])，滚动变量 O(1) 空间 | [P0053MaximumSubarray.java](src/leetcode/dp/P0053MaximumSubarray.java) |
 | 54 | Spiral Matrix / 螺旋矩阵 | Medium | matrix | 四条边界收缩，逐圈取数 | [P0054SpiralMatrix.java](src/leetcode/matrix/P0054SpiralMatrix.java) |
+| 55 | Jump Game / 跳跃游戏 | Medium | dp | 贪心：把可跳步数当成「剩余能量」，每走一格消耗 1；能量为负说明到不了当前格，遇到更大的步数就替换（等价于维护「最远可达位置 - 当前位置」）；注释附倒序「最早能到终点的位置」写法 | [P0055JumpGame.java](src/leetcode/dp/P0055JumpGame.java) |
 | 56 | Merge Intervals / 合并区间 | Medium | intervals | 按左端点排序 + 一次遍历合并；返回前用 Arrays.copyOf 截取 size+1 个有效区间 | [P0056MergeIntervals.java](src/leetcode/intervals/P0056MergeIntervals.java) |
 | 73 | Set Matrix Zeroes / 矩阵置零 | Medium | matrix | 首行首列当标记位，O(1) 额外空间 | [P0073SetMatrixZeroes.java](src/leetcode/matrix/P0073SetMatrixZeroes.java) |
 | 74 | Search a 2D Matrix / 搜索二维矩阵 | Medium | binary-search | 两次二分：先在第一列上二分定位「第一个 matrix[u][0] >= target」的行 u，命中行首直接 true；否则在 u-1 行内再二分。注意 u==0（比所有都小）和 u==m（比所有都大）两个边界 | [P0074SearchA2DMatrix.java](src/leetcode/binary-search/P0074SearchA2DMatrix.java) |
