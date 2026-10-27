@@ -56,6 +56,7 @@ leetcode-java/
         │   ├── P0053MaximumSubarray.java
         │   ├── P0055JumpGame.java
         │   ├── P0070ClimbingStairs.java
+        │   ├── P0118PascalsTriangle.java
         │   └── P0121BestTimeToBuyAndSellStock.java
         ├── graph/
         │   ├── P0200NumberOfIslands.java
@@ -179,6 +180,7 @@ leetcode-java/
 | 105 | Construct Binary Tree from Preorder and Inorder Traversal / 从前序与中序遍历序列构造二叉树 | Medium | tree | 分治 + 半开区间 [start,end)：先序首元素是根，在中序里定位根把两组序列切成左右两段；把中序下标预存进哈希表可把 O(n^2) 降到 O(n) | [P0105ConstructBinaryTreeFromPreorderAndInorderTraversal.java](src/leetcode/tree/P0105ConstructBinaryTreeFromPreorderAndInorderTraversal.java) |
 | 108 | Convert Sorted Array to Binary Search Tree / 将有序数组转换为二叉搜索树 | Easy | tree | 取区间中点作根（mid=(left+right)/2 取中间偏左），递归建左右子树 → 天然高度平衡；空区间返回 null | [P0108ConvertSortedArrayToBinarySearchTree.java](src/leetcode/tree/P0108ConvertSortedArrayToBinarySearchTree.java) |
 | 114 | Flatten Binary Tree to Linked List / 二叉树展开为链表 | Medium | tree | Morris 风格原地展开 O(1) 空间：有左子树时先找左子树最右结点、把原右子树接上去，再把左子树搬到右边并置空 left；展平顺序 = 先序 | [P0114FlattenBinaryTreeToLinkedList.java](src/leetcode/tree/P0114FlattenBinaryTreeToLinkedList.java) |
+| 118 | Pascal's Triangle / 杨辉三角 | Easy | dp | 杨辉三角：第 i 行有 i+1 个数，两头都是 1，中间 = 上一行相邻两项之和 res[i-1][j-1] + res[i-1][j]；O(n^2) 时间与空间（输出本身就这么大） | [P0118PascalsTriangle.java](src/leetcode/dp/P0118PascalsTriangle.java) |
 | 121 | Best Time to Buy and Sell Stock / 买卖股票的最佳时机 | Easy | dp | 一次遍历（DP/贪心）：维护「到今天为止的最低买入价」，每天用「今天价格 - 最低价」更新最大收益；等价于 f(i) = max(f(i-1), 今天价 - 前 i-1 天最低价)；O(n) 时间 O(1) 空间 | [P0121BestTimeToBuyAndSellStock.java](src/leetcode/dp/P0121BestTimeToBuyAndSellStock.java) |
 | 124 | Binary Tree Maximum Path Sum / 二叉树中的最大路径和 | Hard | tree | 树形 DP：返回给上层的是「单边最大贡献」max(左,右)+val，而用来更新答案的是「可以分叉的拱形路径」左+右+val；子树贡献为负就取 0（不选这条分支） | [P0124BinaryTreeMaximumPathSum.java](src/leetcode/tree/P0124BinaryTreeMaximumPathSum.java) |
 | 128 | Longest Consecutive Sequence / 最长连续序列 | Medium | hash | HashSet O(n) 查找，只从序列起点(num-1 不存在)开始扩展 | [P0128LongestConsecutiveSequence.java](src/leetcode/hash/P0128LongestConsecutiveSequence.java) |
