@@ -55,6 +55,7 @@ leetcode-java/
         │   ├── P0045JumpGameII.java
         │   ├── P0053MaximumSubarray.java
         │   ├── P0055JumpGame.java
+        │   ├── P0070ClimbingStairs.java
         │   └── P0121BestTimeToBuyAndSellStock.java
         ├── graph/
         │   ├── P0200NumberOfIslands.java
@@ -163,6 +164,7 @@ leetcode-java/
 | 54 | Spiral Matrix / 螺旋矩阵 | Medium | matrix | 四条边界收缩，逐圈取数 | [P0054SpiralMatrix.java](src/leetcode/matrix/P0054SpiralMatrix.java) |
 | 55 | Jump Game / 跳跃游戏 | Medium | dp | 贪心：把可跳步数当成「剩余能量」，每走一格消耗 1；能量为负说明到不了当前格，遇到更大的步数就替换（等价于维护「最远可达位置 - 当前位置」）；注释附倒序「最早能到终点的位置」写法 | [P0055JumpGame.java](src/leetcode/dp/P0055JumpGame.java) |
 | 56 | Merge Intervals / 合并区间 | Medium | intervals | 按左端点排序 + 一次遍历合并；返回前用 Arrays.copyOf 截取 size+1 个有效区间 | [P0056MergeIntervals.java](src/leetcode/intervals/P0056MergeIntervals.java) |
+| 70 | Climbing Stairs / 爬楼梯 | Easy | dp | 线性 DP（斐波那契）：f(n) = f(n-1) + f(n-2)；用三个滚动变量把空间压到 O(1)，迭代 n 次，每次 num1<-num2、num2<-res、res<-num1+num2 | [P0070ClimbingStairs.java](src/leetcode/dp/P0070ClimbingStairs.java) |
 | 73 | Set Matrix Zeroes / 矩阵置零 | Medium | matrix | 首行首列当标记位，O(1) 额外空间 | [P0073SetMatrixZeroes.java](src/leetcode/matrix/P0073SetMatrixZeroes.java) |
 | 74 | Search a 2D Matrix / 搜索二维矩阵 | Medium | binary-search | 两次二分：先在第一列上二分定位「第一个 matrix[u][0] >= target」的行 u，命中行首直接 true；否则在 u-1 行内再二分。注意 u==0（比所有都小）和 u==m（比所有都大）两个边界 | [P0074SearchA2DMatrix.java](src/leetcode/binary-search/P0074SearchA2DMatrix.java) |
 | 76 | Minimum Window Substring / 最小覆盖子串 | Hard | sliding-window | 滑动窗口：r 扩张到覆盖 t，再收缩 l 取最小；need 计数判断是否覆盖，O(n) | [P0076MinimumWindowSubstring.java](src/leetcode/sliding-window/P0076MinimumWindowSubstring.java) |
