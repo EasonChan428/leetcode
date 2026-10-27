@@ -57,7 +57,8 @@ leetcode-java/
         │   ├── P0055JumpGame.java
         │   ├── P0070ClimbingStairs.java
         │   ├── P0118PascalsTriangle.java
-        │   └── P0121BestTimeToBuyAndSellStock.java
+        │   ├── P0121BestTimeToBuyAndSellStock.java
+        │   └── P0198HouseRobber.java
         ├── graph/
         │   ├── P0200NumberOfIslands.java
         │   ├── P0207CourseSchedule.java
@@ -194,6 +195,7 @@ leetcode-java/
 | 155 | Min Stack / 最小栈 | Medium | stack | 差值法：栈里只存「val - 当前min」的差值（long 防溢出），并维护一个 min 变量；diff<0 说明新值是新的最小值，pop 时若 diff<0 就用 min-diff 回滚；O(1) 额外空间 | [P0155MinStack.java](src/leetcode/stack/P0155MinStack.java) |
 | 160 | Intersection of Two Linked Lists / 相交链表 | Easy | linked-list | 双指针互换链表头，各自走 a+b-c 步后相遇；不相交则同时为 null | [P0160IntersectionOfTwoLinkedLists.java](src/leetcode/linked-list/P0160IntersectionOfTwoLinkedLists.java) |
 | 189 | Rotate Array | Medium | array | 三次反转，原地 O(1) 空间 | [P0189RotateArray.java](src/leetcode/array/P0189RotateArray.java) |
+| 198 | House Robber / 打家劫舍 | Medium | dp | 线性 DP：maxN[i] = max(前 i-1 间的最优, 前 i-2 间的最优 + 第 i 间)；两种状态「偷 / 不偷」取最大；可用两个滚动变量把 O(n) 空间压到 O(1) | [P0198HouseRobber.java](src/leetcode/dp/P0198HouseRobber.java) |
 | 199 | Binary Tree Right Side View / 二叉树的右视图 | Medium | tree | DFS 右优先：先递归右子树，depth == ans.size() 表示该深度首次到达，正好是最右可见结点；注释附层序版 | [P0199BinaryTreeRightSideView.java](src/leetcode/tree/P0199BinaryTreeRightSideView.java) |
 | 200 | Number of Islands / 岛屿数量 | Medium | graph | 网格 DFS 淹没法：外层每碰到一块 '1' 就计数 +1，并 dfs 把整座岛标成 '2'；访问过的格子改值即完成去重，整体 O(mn) | [P0200NumberOfIslands.java](src/leetcode/graph/P0200NumberOfIslands.java) |
 | 206 | Reverse Linked List / 反转链表 | Easy | linked-list | 迭代：pre/cur 双指针，逐个把 next 指向前驱，O(n) 时间 O(1) 空间 | [P0206ReverseLinkedList.java](src/leetcode/linked-list/P0206ReverseLinkedList.java) |
