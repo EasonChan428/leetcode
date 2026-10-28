@@ -59,7 +59,8 @@ leetcode-java/
         │   ├── P0118PascalsTriangle.java
         │   ├── P0121BestTimeToBuyAndSellStock.java
         │   ├── P0198HouseRobber.java
-        │   └── P0279PerfectSquares.java
+        │   ├── P0279PerfectSquares.java
+        │   └── P0322CoinChange.java
         ├── graph/
         │   ├── P0200NumberOfIslands.java
         │   ├── P0207CourseSchedule.java
@@ -213,6 +214,7 @@ leetcode-java/
 | 279 | Perfect Squares / 完全平方数 | Medium | dp | 完全背包式 DP：f[i] = 1 + min{ f[i - j²] }（j² ≤ i），f[0]=0 作基例；内层枚举「最后一个用的平方数」；O(n√n) 时间 O(n) 空间 | [P0279PerfectSquares.java](src/leetcode/dp/P0279PerfectSquares.java) |
 | 283 | Move Zeroes / 移动零 | Easy | two-pointers | 快慢双指针，非零元素依次换到前面，零自动沉底 | [P0283MoveZeroes.java](src/leetcode/two-pointers/P0283MoveZeroes.java) |
 | 295 | Find Median from Data Stream / 数据流的中位数 | Hard | heap | 双堆：queMin 大顶堆存较小的一半、queMax 小顶堆存较大的一半；addNum 按大小归堆后，把多出来的一个挪到另一半，保证左堆元素数 >= 右堆且相差不超过 1；findMedian 奇数取左堆顶、偶数取两堆顶平均 | [P0295FindMedianFromDataStream.java](src/leetcode/heap/P0295FindMedianFromDataStream.java) |
+| 322 | Coin Change / 零钱兑换 | Medium | dp | 完全背包 DP：dp[i] 表示凑出金额 i 的最少硬币数，dp[i] = min(dp[i - c]) + 1；用 amount+1 作「不可达」哨兵，全程无需额外判空，最后 dp[amount] > amount 即返回 -1。O(amount × n) 时间 O(amount) 空间 | [P0322CoinChange.java](src/leetcode/dp/P0322CoinChange.java) |
 | 347 | Top K Frequent Elements / 前 K 个高频元素 | Medium | heap | 桶排序：先用 HashMap 统计频次，再用「频次」当下标建桶（桶数组长度 n+1），从高频桶往低频桶倒着取，拿满 k 个即止；O(n) 时间，正是题目 follow-up 想要的优于 O(n log n) 的解法 | [P0347TopKFrequentElements.java](src/leetcode/heap/P0347TopKFrequentElements.java) |
 | 394 | Decode String / 字符串解码 | Medium | stack | 双栈：一个栈存括号前的重复次数、一个栈存括号前已累积的字符串；遇到 [ 压栈并重置 num/res，遇到 ] 弹栈、把当前 res 重复 n 次再拼回外层；数字是多位所以要 num = num*10 + digit | [P0394DecodeString.java](src/leetcode/stack/P0394DecodeString.java) |
 | 437 | Path Sum III / 路径总和 III | Medium | tree | 前缀和 + 回溯：根到当前结点的前缀和存进 HashMap，curSum-target 的出现次数就是以当前结点结尾的合法路径数；离开子树时撤销状态，保证只统计祖先 | [P0437PathSumIII.java](src/leetcode/tree/P0437PathSumIII.java) |
