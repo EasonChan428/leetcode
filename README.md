@@ -58,6 +58,7 @@ leetcode-java/
         │   ├── P0070ClimbingStairs.java
         │   ├── P0118PascalsTriangle.java
         │   ├── P0121BestTimeToBuyAndSellStock.java
+        │   ├── P0139WordBreak.java
         │   ├── P0198HouseRobber.java
         │   ├── P0279PerfectSquares.java
         │   └── P0322CoinChange.java
@@ -189,6 +190,7 @@ leetcode-java/
 | 128 | Longest Consecutive Sequence / 最长连续序列 | Medium | hash | HashSet O(n) 查找，只从序列起点(num-1 不存在)开始扩展 | [P0128LongestConsecutiveSequence.java](src/leetcode/hash/P0128LongestConsecutiveSequence.java) |
 | 131 | Palindrome Partitioning / 分割回文串 | Medium | backtracking | 回溯 + DP 预处理：flag[i][j] 记 s[i..j] 是否回文，按 i 从大到小填（依赖 i+1 行）；dfs 枚举每段终点 j，只有 flag[i][j] 为真才切，切到最后收结果 | [P0131PalindromePartitioning.java](src/leetcode/backtracking/P0131PalindromePartitioning.java) |
 | 138 | Copy List with Random Pointer / 随机链表的复制 | Medium | linked-list | 拼接 + 拆分：原/新节点交错成一条链，cur.random.next 即新节点的 random；最后拆回两条链并单独处理原链尾 | [P0138CopyListWithRandomPointer.java](src/leetcode/linked-list/P0138CopyListWithRandomPointer.java) |
+| 139 | Word Break / 单词拆分 | Medium | dp | 完全背包式可行性 DP：dp[i] 表示前缀 s[0,i) 能否被拆成字典单词，枚举分割点 j，只要 dp[j] 为真且 s[j,i) 在字典里就置 dp[i]=true 并 break；O(n²) 次判断（含 substring 拷贝约 O(n³) 字符操作），O(n) 空间 | [P0139WordBreak.java](src/leetcode/dp/P0139WordBreak.java) |
 | 141 | Linked List Cycle / 环形链表 | Easy | linked-list | 快慢指针 Floyd 判圈：fast 从 head.next 出发避免初始即相遇；相遇→有环，fast 越界→无环 | [P0141LinkedListCycle.java](src/leetcode/linked-list/P0141LinkedListCycle.java) |
 | 142 | Linked List Cycle II / 环形链表 II | Medium | linked-list | Floyd 判圈后，ptr 从 head 与 slow 同速前进，相遇处即入环点（因 a = kL - b） | [P0142LinkedListCycleII.java](src/leetcode/linked-list/P0142LinkedListCycleII.java) |
 | 146 | LRU Cache / LRU 缓存 | Medium | design | 哈希表 + 双向链表（伪头/伪尾哨兵）：get/put 均 O(1)；put 超容量时摘掉尾结点并从表中删掉它的 key | [P0146LRUCache.java](src/leetcode/design/P0146LRUCache.java) |
