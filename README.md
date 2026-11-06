@@ -63,7 +63,8 @@ leetcode-java/
         │   ├── P0198HouseRobber.java
         │   ├── P0279PerfectSquares.java
         │   ├── P0300LongestIncreasingSubsequence.java
-        │   └── P0322CoinChange.java
+        │   ├── P0322CoinChange.java
+        │   └── P0416PartitionEqualSubsetSum.java
         ├── graph/
         │   ├── P0200NumberOfIslands.java
         │   ├── P0207CourseSchedule.java
@@ -223,6 +224,7 @@ leetcode-java/
 | 322 | Coin Change / 零钱兑换 | Medium | dp | 完全背包 DP：dp[i] 表示凑出金额 i 的最少硬币数，dp[i] = min(dp[i - c]) + 1；用 amount+1 作「不可达」哨兵，全程无需额外判空，最后 dp[amount] > amount 即返回 -1。O(amount × n) 时间 O(amount) 空间 | [P0322CoinChange.java](src/leetcode/dp/P0322CoinChange.java) |
 | 347 | Top K Frequent Elements / 前 K 个高频元素 | Medium | heap | 桶排序：先用 HashMap 统计频次，再用「频次」当下标建桶（桶数组长度 n+1），从高频桶往低频桶倒着取，拿满 k 个即止；O(n) 时间，正是题目 follow-up 想要的优于 O(n log n) 的解法 | [P0347TopKFrequentElements.java](src/leetcode/heap/P0347TopKFrequentElements.java) |
 | 394 | Decode String / 字符串解码 | Medium | stack | 双栈：一个栈存括号前的重复次数、一个栈存括号前已累积的字符串；遇到 [ 压栈并重置 num/res，遇到 ] 弹栈、把当前 res 重复 n 次再拼回外层；数字是多位所以要 num = num*10 + digit | [P0394DecodeString.java](src/leetcode/stack/P0394DecodeString.java) |
+| 416 | Partition Equal Subset Sum / 分割等和子集 | Medium | dp | 01 背包可行性：总和奇数直接 false，否则背包容量 target = sum/2，dp[i] 表示能否凑出和 i，内层倒序遍历容量保证每个数只用一次；O(n × sum) 时间 O(sum) 空间 | [P0416PartitionEqualSubsetSum.java](src/leetcode/dp/P0416PartitionEqualSubsetSum.java) |
 | 437 | Path Sum III / 路径总和 III | Medium | tree | 前缀和 + 回溯：根到当前结点的前缀和存进 HashMap，curSum-target 的出现次数就是以当前结点结尾的合法路径数；离开子树时撤销状态，保证只统计祖先 | [P0437PathSumIII.java](src/leetcode/tree/P0437PathSumIII.java) |
 | 438 | Find All Anagrams in a String / 找到字符串中所有字母异位词 | Medium | sliding-window | 固定长度滑动窗口 + 26 位计数数组，Arrays.equals 比较 | [P0438FindAllAnagramsInAString.java](src/leetcode/sliding-window/P0438FindAllAnagramsInAString.java) |
 | 543 | Diameter of Binary Tree / 二叉树的直径 | Easy | tree | 在 104 的骨架上加一句：每到一个结点就用「左深+右深」更新全局最大直径；空返回 0，叶子返回 1 | [P0543DiameterOfBinaryTree.java](src/leetcode/tree/P0543DiameterOfBinaryTree.java) |
