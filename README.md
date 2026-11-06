@@ -97,6 +97,7 @@ leetcode-java/
         │   └── P0240SearchA2DMatrixII.java
         ├── stack/
         │   ├── P0020ValidParentheses.java
+        │   ├── P0032LongestValidParentheses.java
         │   ├── P0084LargestRectangleInHistogram.java
         │   ├── P0155MinStack.java
         │   ├── P0394DecodeString.java
@@ -157,6 +158,7 @@ leetcode-java/
 | 23 | Merge k Sorted Lists / 合并K个升序链表 | Hard | linked-list | 分治合并（两两配对归并）：O(N log k) 时间，O(log k) 递归栈；注释附顺序归并 O(k^2 n) 对照版 | [P0023MergeKSortedLists.java](src/leetcode/linked-list/P0023MergeKSortedLists.java) |
 | 24 | Swap Nodes in Pairs / 两两交换链表中的节点 | Medium | linked-list | 哑结点 + 三指针换序：先存下一组起点 nextPair 再改指针，避免丢失后续链 | [P0024SwapNodesInPairs.java](src/leetcode/linked-list/P0024SwapNodesInPairs.java) |
 | 25 | Reverse Nodes in k-Group / K 个一组翻转链表 | Hard | linked-list | 哑结点 + 先数 k 个定位 end；断开本组整体反转后接回，不足 k 个保持原样 | [P0025ReverseNodesInKGroup.java](src/leetcode/linked-list/P0025ReverseNodesInKGroup.java) |
+| 32 | Longest Valid Parentheses / 最长有效括号 | Hard | stack | 栈标记法：栈里只存未匹配的左括号下标，多余的右括号当场标记无效，遍历完再把栈里剩下的左括号一并标记，问题转成「在标记数组里找最长连续 1」；O(n) 时间 O(n) 空间。文件末尾附注释版 O(n) 动态规划解法（dp[i] 为以 s[i] 结尾的最长有效长度） | [P0032LongestValidParentheses.java](src/leetcode/stack/P0032LongestValidParentheses.java) |
 | 33 | Search in Rotated Sorted Array / 搜索旋转排序数组 | Medium | binary-search | 旋转数组二分：每次 mid 把区间切成两半，必有一半完全有序；先判断哪一半有序，再用「有序那一半的边界」判断 target 是否落在里面，落在里面就收缩到那一半，否则去另一半 | [P0033SearchInRotatedSortedArray.java](src/leetcode/binary-search/P0033SearchInRotatedSortedArray.java) |
 | 34 | Find First and Last Position of Element in Sorted Array / 在排序数组中查找元素的第一个和最后一个位置 | Medium | binary-search | 两次二分：命中 target 时先记录 mid，再往左继续搜 first、往右继续搜 last；没命中过就保持 -1 | [P0034FindFirstAndLastPositionOfElementInSortedArray.java](src/leetcode/binary-search/P0034FindFirstAndLastPositionOfElementInSortedArray.java) |
 | 35 | Search Insert Position / 搜索插入位置 | Easy | binary-search | 二分找「第一个 >= target 的位置」：nums[mid] < target 就 l=mid+1，否则 r=mid-1，循环结束时 l 就是插入位置；mid 用 l+(r-l)/2 防溢出 | [P0035SearchInsertPosition.java](src/leetcode/binary-search/P0035SearchInsertPosition.java) |
