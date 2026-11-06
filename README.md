@@ -59,6 +59,7 @@ leetcode-java/
         │   ├── P0118PascalsTriangle.java
         │   ├── P0121BestTimeToBuyAndSellStock.java
         │   ├── P0139WordBreak.java
+        │   ├── P0152MaximumProductSubarray.java
         │   ├── P0198HouseRobber.java
         │   ├── P0279PerfectSquares.java
         │   ├── P0300LongestIncreasingSubsequence.java
@@ -196,6 +197,7 @@ leetcode-java/
 | 142 | Linked List Cycle II / 环形链表 II | Medium | linked-list | Floyd 判圈后，ptr 从 head 与 slow 同速前进，相遇处即入环点（因 a = kL - b） | [P0142LinkedListCycleII.java](src/leetcode/linked-list/P0142LinkedListCycleII.java) |
 | 146 | LRU Cache / LRU 缓存 | Medium | design | 哈希表 + 双向链表（伪头/伪尾哨兵）：get/put 均 O(1)；put 超容量时摘掉尾结点并从表中删掉它的 key | [P0146LRUCache.java](src/leetcode/design/P0146LRUCache.java) |
 | 148 | Sort List / 排序链表 | Medium | linked-list | 自底向上归并排序（迭代）：每轮按 subLength 切段两两合并，O(n log n) 时间 O(1) 空间 | [P0148SortList.java](src/leetcode/linked-list/P0148SortList.java) |
+| 152 | Maximum Product Subarray / 乘积最大子数组 | Medium | dp | 双状态 DP：maxDP[i] / minDP[i] 分别表示以 nums[i] 结尾的连续子数组的最大、最小乘积，转移取 {nums[i], maxDP[i-1]*nums[i], minDP[i-1]*nums[i]} 三者极值，负负得正靠 minDP 记住；答案取全表 maxDP 最大值；O(n) 时间 O(n) 空间 | [P0152MaximumProductSubarray.java](src/leetcode/dp/P0152MaximumProductSubarray.java) |
 | 153 | Find Minimum in Rotated Sorted Array / 寻找旋转排序数组中的最小值 | Medium | binary-search | 二分：只比较 nums[mid] 和 nums[r] —— 比 r 小说明最小值在 [l,mid]（mid 本身也可能是答案，所以 r=mid 而不是 mid-1）；比 r 大说明在 (mid,r] 取 l=mid+1；l==r 时就是最小值 | [P0153FindMinimumInRotatedSortedArray.java](src/leetcode/binary-search/P0153FindMinimumInRotatedSortedArray.java) |
 | 155 | Min Stack / 最小栈 | Medium | stack | 差值法：栈里只存「val - 当前min」的差值（long 防溢出），并维护一个 min 变量；diff<0 说明新值是新的最小值，pop 时若 diff<0 就用 min-diff 回滚；O(1) 额外空间 | [P0155MinStack.java](src/leetcode/stack/P0155MinStack.java) |
 | 160 | Intersection of Two Linked Lists / 相交链表 | Easy | linked-list | 双指针互换链表头，各自走 a+b-c 步后相遇；不相交则同时为 null | [P0160IntersectionOfTwoLinkedLists.java](src/leetcode/linked-list/P0160IntersectionOfTwoLinkedLists.java) |
