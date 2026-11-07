@@ -56,6 +56,7 @@ leetcode-java/
         │   ├── P0053MaximumSubarray.java
         │   ├── P0055JumpGame.java
         │   ├── P0062UniquePaths.java
+        │   ├── P0064MinimumPathSum.java
         │   ├── P0070ClimbingStairs.java
         │   ├── P0118PascalsTriangle.java
         │   ├── P0121BestTimeToBuyAndSellStock.java
@@ -176,6 +177,7 @@ leetcode-java/
 | 55 | Jump Game / 跳跃游戏 | Medium | dp | 贪心：把可跳步数当成「剩余能量」，每走一格消耗 1；能量为负说明到不了当前格，遇到更大的步数就替换（等价于维护「最远可达位置 - 当前位置」）；注释附倒序「最早能到终点的位置」写法 | [P0055JumpGame.java](src/leetcode/dp/P0055JumpGame.java) |
 | 56 | Merge Intervals / 合并区间 | Medium | intervals | 按左端点排序 + 一次遍历合并；返回前用 Arrays.copyOf 截取 size+1 个有效区间 | [P0056MergeIntervals.java](src/leetcode/intervals/P0056MergeIntervals.java) |
 | 62 | Unique Paths / 不同路径 | Medium | dp | 二维 DP：dp[i][j] = dp[i-1][j] + dp[i][j-1]，第一行/第一列全为 1 作边界（只能一直向右/向下走），答案取 dp[m-1][n-1]；O(m×n) 时间 O(m×n) 空间。文件末尾附注释版 O(n) 空间滚动数组优化（cur[j] += cur[j-1]） | [P0062UniquePaths.java](src/leetcode/dp/P0062UniquePaths.java) |
+| 64 | Minimum Path Sum / 最小路径和 | Medium | dp | 网格 DP：dp[i][j] = min(dp[i-1][j], dp[i][j-1]) + grid[i][j]，第一行/第一列只能沿一个方向累加（前缀和）；O(m×n) 时间 O(m×n) 空间，可滚成一维 O(n) | [P0064MinimumPathSum.java](src/leetcode/dp/P0064MinimumPathSum.java) |
 | 70 | Climbing Stairs / 爬楼梯 | Easy | dp | 线性 DP（斐波那契）：f(n) = f(n-1) + f(n-2)；用三个滚动变量把空间压到 O(1)，迭代 n 次，每次 num1<-num2、num2<-res、res<-num1+num2 | [P0070ClimbingStairs.java](src/leetcode/dp/P0070ClimbingStairs.java) |
 | 73 | Set Matrix Zeroes / 矩阵置零 | Medium | matrix | 首行首列当标记位，O(1) 额外空间 | [P0073SetMatrixZeroes.java](src/leetcode/matrix/P0073SetMatrixZeroes.java) |
 | 74 | Search a 2D Matrix / 搜索二维矩阵 | Medium | binary-search | 两次二分：先在第一列上二分定位「第一个 matrix[u][0] >= target」的行 u，命中行首直接 true；否则在 u-1 行内再二分。注意 u==0（比所有都小）和 u==m（比所有都大）两个边界 | [P0074SearchA2DMatrix.java](src/leetcode/binary-search/P0074SearchA2DMatrix.java) |
