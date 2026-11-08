@@ -59,6 +59,7 @@ leetcode-java/
         │   ├── P0062UniquePaths.java
         │   ├── P0064MinimumPathSum.java
         │   ├── P0070ClimbingStairs.java
+        │   ├── P0072EditDistance.java
         │   ├── P0118PascalsTriangle.java
         │   ├── P0121BestTimeToBuyAndSellStock.java
         │   ├── P0139WordBreak.java
@@ -182,6 +183,7 @@ leetcode-java/
 | 62 | Unique Paths / 不同路径 | Medium | dp | 二维 DP：dp[i][j] = dp[i-1][j] + dp[i][j-1]，第一行/第一列全为 1 作边界（只能一直向右/向下走），答案取 dp[m-1][n-1]；O(m×n) 时间 O(m×n) 空间。文件末尾附注释版 O(n) 空间滚动数组优化（cur[j] += cur[j-1]） | [P0062UniquePaths.java](src/leetcode/dp/P0062UniquePaths.java) |
 | 64 | Minimum Path Sum / 最小路径和 | Medium | dp | 网格 DP：dp[i][j] = min(dp[i-1][j], dp[i][j-1]) + grid[i][j]，第一行/第一列只能沿一个方向累加（前缀和）；O(m×n) 时间 O(m×n) 空间，可滚成一维 O(n) | [P0064MinimumPathSum.java](src/leetcode/dp/P0064MinimumPathSum.java) |
 | 70 | Climbing Stairs / 爬楼梯 | Easy | dp | 线性 DP（斐波那契）：f(n) = f(n-1) + f(n-2)；用三个滚动变量把空间压到 O(1)，迭代 n 次，每次 num1<-num2、num2<-res、res<-num1+num2 | [P0070ClimbingStairs.java](src/leetcode/dp/P0070ClimbingStairs.java) |
+| 72 | Edit Distance / 编辑距离 | Hard | dp | 二维 DP：dp[i][j] 为 word1 前 i 个字符转成 word2 前 j 个字符的最少操作数，字符相同直接继承 dp[i-1][j-1]，否则 min(替换, 插入, 删除)+1；边界 dp[i][0]=i、dp[0][j]=j（全删/全插）；O(m×n) 时间 O(m×n) 空间，可滚成一维 | [P0072EditDistance.java](src/leetcode/dp/P0072EditDistance.java) |
 | 73 | Set Matrix Zeroes / 矩阵置零 | Medium | matrix | 首行首列当标记位，O(1) 额外空间 | [P0073SetMatrixZeroes.java](src/leetcode/matrix/P0073SetMatrixZeroes.java) |
 | 74 | Search a 2D Matrix / 搜索二维矩阵 | Medium | binary-search | 两次二分：先在第一列上二分定位「第一个 matrix[u][0] >= target」的行 u，命中行首直接 true；否则在 u-1 行内再二分。注意 u==0（比所有都小）和 u==m（比所有都大）两个边界 | [P0074SearchA2DMatrix.java](src/leetcode/binary-search/P0074SearchA2DMatrix.java) |
 | 76 | Minimum Window Substring / 最小覆盖子串 | Hard | sliding-window | 滑动窗口：r 扩张到覆盖 t，再收缩 l 取最小；need 计数判断是否覆盖，O(n) | [P0076MinimumWindowSubstring.java](src/leetcode/sliding-window/P0076MinimumWindowSubstring.java) |
