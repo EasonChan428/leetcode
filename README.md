@@ -80,6 +80,9 @@ leetcode-java/
         │   ├── P0200NumberOfIslands.java
         │   ├── P0207CourseSchedule.java
         │   └── P0994RottingOranges.java
+        ├── hash/
+        │   ├── P0049GroupAnagrams.java
+        │   └── P0128LongestConsecutiveSequence.java
         ├── heap/
         │   ├── P0215KthLargestElementInAnArray.java
         │   ├── P0295FindMedianFromDataStream.java
@@ -106,6 +109,11 @@ leetcode-java/
         │   ├── P0054SpiralMatrix.java
         │   ├── P0073SetMatrixZeroes.java
         │   └── P0240SearchA2DMatrixII.java
+        ├── sliding-window/
+        │   ├── P0003LongestSubstringWithoutRepeatingCharacters.java
+        │   ├── P0076MinimumWindowSubstring.java
+        │   ├── P0239SlidingWindowMaximum.java
+        │   └── P0438FindAllAnagramsInAString.java
         ├── stack/
         │   ├── P0020ValidParentheses.java
         │   ├── P0032LongestValidParentheses.java
@@ -113,22 +121,27 @@ leetcode-java/
         │   ├── P0155MinStack.java
         │   ├── P0394DecodeString.java
         │   └── P0739DailyTemperatures.java
-        └── tree/
-            ├── P0094BinaryTreeInorderTraversal.java
-            ├── P0098ValidateBinarySearchTree.java
-            ├── P0101SymmetricTree.java
-            ├── P0102BinaryTreeLevelOrderTraversal.java
-            ├── P0104MaximumDepthOfBinaryTree.java
-            ├── P0105ConstructBinaryTreeFromPreorderAndInorderTraversal.java
-            ├── P0108ConvertSortedArrayToBinarySearchTree.java
-            ├── P0114FlattenBinaryTreeToLinkedList.java
-            ├── P0124BinaryTreeMaximumPathSum.java
-            ├── P0199BinaryTreeRightSideView.java
-            ├── P0226InvertBinaryTree.java
-            ├── P0230KthSmallestElementInABST.java
-            ├── P0236LowestCommonAncestorOfABinaryTree.java
-            ├── P0437PathSumIII.java
-            └── P0543DiameterOfBinaryTree.java
+        ├── tree/
+        │   ├── P0094BinaryTreeInorderTraversal.java
+        │   ├── P0098ValidateBinarySearchTree.java
+        │   ├── P0101SymmetricTree.java
+        │   ├── P0102BinaryTreeLevelOrderTraversal.java
+        │   ├── P0104MaximumDepthOfBinaryTree.java
+        │   ├── P0105ConstructBinaryTreeFromPreorderAndInorderTraversal.java
+        │   ├── P0108ConvertSortedArrayToBinarySearchTree.java
+        │   ├── P0114FlattenBinaryTreeToLinkedList.java
+        │   ├── P0124BinaryTreeMaximumPathSum.java
+        │   ├── P0199BinaryTreeRightSideView.java
+        │   ├── P0226InvertBinaryTree.java
+        │   ├── P0230KthSmallestElementInABST.java
+        │   ├── P0236LowestCommonAncestorOfABinaryTree.java
+        │   ├── P0437PathSumIII.java
+        │   └── P0543DiameterOfBinaryTree.java
+        └── two-pointers/
+            ├── P0011ContainerWithMostWater.java
+            ├── P0015ThreeSum.java
+            ├── P0042TrappingRainWater.java
+            └── P0283MoveZeroes.java
 ```
 
 ## 推送（网络不稳时用这个）
