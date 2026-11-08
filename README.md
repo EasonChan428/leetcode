@@ -67,7 +67,8 @@ leetcode-java/
         │   ├── P0279PerfectSquares.java
         │   ├── P0300LongestIncreasingSubsequence.java
         │   ├── P0322CoinChange.java
-        │   └── P0416PartitionEqualSubsetSum.java
+        │   ├── P0416PartitionEqualSubsetSum.java
+        │   └── P1143LongestCommonSubsequence.java
         ├── graph/
         │   ├── P0200NumberOfIslands.java
         │   ├── P0207CourseSchedule.java
@@ -240,6 +241,7 @@ leetcode-java/
 | 739 | Daily Temperatures / 每日温度 | Medium | stack | 单调栈：栈里存「还没找到更暖一天」的下标，栈底到栈顶温度递减；遇到更暖的温度就 while 弹出并记录 i - prv，没弹出的就留在栈里（答案保持 0） | [P0739DailyTemperatures.java](src/leetcode/stack/P0739DailyTemperatures.java) |
 | 763 | Partition Labels / 划分字母区间 | Medium | intervals | 自己的思路：先统计每个字母的总次数，扫描时遇到「本段里首次出现的字母」就把它的总次数加进 flag，每处理一个字符 flag 减 1；flag 归零说明这一段里所有字母的出现都被吸收完了，切一刀 | [P0763PartitionLabels.java](src/leetcode/intervals/P0763PartitionLabels.java) |
 | 994 | Rotting Oranges / 腐烂的橘子 | Medium | graph | 多源 BFS 分层：先把所有烂橘子入队，每层 = 1 分钟；把「入队时标记为 2」防止重复入队；while 里的 count>0 保证没有新鲜橘子时直接返回 0 | [P0994RottingOranges.java](src/leetcode/graph/P0994RottingOranges.java) |
+| 1143 | Longest Common Subsequence / 最长公共子序列 | Medium | dp | 二维 LCS：dp[i][j] 为 text1 前 i 个字符与 text2 前 j 个字符的 LCS 长度，字符相等取 dp[i-1][j-1]+1，否则取 max(dp[i-1][j], dp[i][j-1])；下标右移一位让第 0 行/列天然为 0 作边界；O(m×n) 时间 O(m×n) 空间，可滚成一维 | [P1143LongestCommonSubsequence.java](src/leetcode/dp/P1143LongestCommonSubsequence.java) |
 <!-- INDEX:END -->
 
 ## 怎么加一道新题
