@@ -34,6 +34,7 @@ leetcode-java/
         │   ├── P0001TwoSum.java
         │   ├── P0041FirstMissingPositive.java
         │   ├── P0136SingleNumber.java
+        │   ├── P0169MajorityElement.java
         │   ├── P0189RotateArray.java
         │   ├── P0238ProductOfArrayExceptSelf.java
         │   └── P0560SubarraySumEqualsK.java
@@ -219,6 +220,7 @@ leetcode-java/
 | 153 | Find Minimum in Rotated Sorted Array / 寻找旋转排序数组中的最小值 | Medium | binary-search | 二分：只比较 nums[mid] 和 nums[r] —— 比 r 小说明最小值在 [l,mid]（mid 本身也可能是答案，所以 r=mid 而不是 mid-1）；比 r 大说明在 (mid,r] 取 l=mid+1；l==r 时就是最小值 | [P0153FindMinimumInRotatedSortedArray.java](src/leetcode/binary-search/P0153FindMinimumInRotatedSortedArray.java) |
 | 155 | Min Stack / 最小栈 | Medium | stack | 差值法：栈里只存「val - 当前min」的差值（long 防溢出），并维护一个 min 变量；diff<0 说明新值是新的最小值，pop 时若 diff<0 就用 min-diff 回滚；O(1) 额外空间 | [P0155MinStack.java](src/leetcode/stack/P0155MinStack.java) |
 | 160 | Intersection of Two Linked Lists / 相交链表 | Easy | linked-list | 双指针互换链表头，各自走 a+b-c 步后相遇；不相交则同时为 null | [P0160IntersectionOfTwoLinkedLists.java](src/leetcode/linked-list/P0160IntersectionOfTwoLinkedLists.java) |
+| 169 | Majority Element / 多数元素 | Easy | array | Boyer-Moore 投票算法：维护候选 res 与计数器 count，相同则 +1、不同则 -1，count 归零即换候选；因多数元素出现次数超过一半，两两「抵消」后剩下的必然是它；O(n) 时间 O(1) 空间。前提是输入保证存在多数元素 | [P0169MajorityElement.java](src/leetcode/array/P0169MajorityElement.java) |
 | 189 | Rotate Array | Medium | array | 三次反转，原地 O(1) 空间 | [P0189RotateArray.java](src/leetcode/array/P0189RotateArray.java) |
 | 198 | House Robber / 打家劫舍 | Medium | dp | 线性 DP：maxN[i] = max(前 i-1 间的最优, 前 i-2 间的最优 + 第 i 间)；两种状态「偷 / 不偷」取最大；可用两个滚动变量把 O(n) 空间压到 O(1) | [P0198HouseRobber.java](src/leetcode/dp/P0198HouseRobber.java) |
 | 199 | Binary Tree Right Side View / 二叉树的右视图 | Medium | tree | DFS 右优先：先递归右子树，depth == ans.size() 表示该深度首次到达，正好是最右可见结点；注释附层序版 | [P0199BinaryTreeRightSideView.java](src/leetcode/tree/P0199BinaryTreeRightSideView.java) |
