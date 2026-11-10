@@ -39,6 +39,7 @@ leetcode-java/
         │   ├── P0169MajorityElement.java
         │   ├── P0189RotateArray.java
         │   ├── P0238ProductOfArrayExceptSelf.java
+        │   ├── P0287FindTheDuplicateNumber.java
         │   └── P0560SubarraySumEqualsK.java
         ├── backtracking/
         │   ├── P0017LetterCombinationsOfAPhoneNumber.java
@@ -255,6 +256,7 @@ leetcode-java/
 | 240 | Search a 2D Matrix II / 搜索二维矩阵 II | Medium | matrix | 左下角标志数：> target 消一行，< target 消一列 | [P0240SearchA2DMatrixII.java](src/leetcode/matrix/P0240SearchA2DMatrixII.java) |
 | 279 | Perfect Squares / 完全平方数 | Medium | dp | 完全背包式 DP：f[i] = 1 + min{ f[i - j²] }（j² ≤ i），f[0]=0 作基例；内层枚举「最后一个用的平方数」；O(n√n) 时间 O(n) 空间 | [P0279PerfectSquares.java](src/leetcode/dp/P0279PerfectSquares.java) |
 | 283 | Move Zeroes / 移动零 | Easy | two-pointers | 快慢双指针，非零元素依次换到前面，零自动沉底 | [P0283MoveZeroes.java](src/leetcode/two-pointers/P0283MoveZeroes.java) |
+| 287 | Find the Duplicate Number / 寻找重复数 | Medium | array | 把下标 i 看成点、nums[i] 看成下一跳（i -> nums[i]），则「有重复数」等价于这条函数图里存在环（重复值即环入口，因为有两个下标指向它）：用 Floyd 快慢指针先求相遇点，再让一个指针回到 0、两指针同速前进，相遇处就是重复值；O(n) 时间 O(1) 空间且不修改原数组；与 142 环形链表 II 完全同构 | [P0287FindTheDuplicateNumber.java](src/leetcode/array/P0287FindTheDuplicateNumber.java) |
 | 295 | Find Median from Data Stream / 数据流的中位数 | Hard | heap | 双堆：queMin 大顶堆存较小的一半、queMax 小顶堆存较大的一半；addNum 按大小归堆后，把多出来的一个挪到另一半，保证左堆元素数 >= 右堆且相差不超过 1；findMedian 奇数取左堆顶、偶数取两堆顶平均 | [P0295FindMedianFromDataStream.java](src/leetcode/heap/P0295FindMedianFromDataStream.java) |
 | 300 | Longest Increasing Subsequence / 最长递增子序列 | Medium | dp | dp[i] 表示以 nums[i] 结尾的最长严格递增子序列长度，内层枚举前驱 j，nums[j] < nums[i] 时 dp[i] = max(dp[i], dp[j]+1)，答案取全表最大值；O(n²) 时间 O(n) 空间（另有 tails + 二分查找 O(n log n) 写法） | [P0300LongestIncreasingSubsequence.java](src/leetcode/dp/P0300LongestIncreasingSubsequence.java) |
 | 322 | Coin Change / 零钱兑换 | Medium | dp | 完全背包 DP：dp[i] 表示凑出金额 i 的最少硬币数，dp[i] = min(dp[i - c]) + 1；用 amount+1 作「不可达」哨兵，全程无需额外判空，最后 dp[amount] > amount 即返回 -1。O(amount × n) 时间 O(amount) 空间 | [P0322CoinChange.java](src/leetcode/dp/P0322CoinChange.java) |
